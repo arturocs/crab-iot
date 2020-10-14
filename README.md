@@ -16,3 +16,6 @@ Esta plataforma puede instalarse fácilmente en un servidor privado y configurar
 
 Al tratarse de un servidor en posesión del usuario, evitamos los problemas de privacidad asociados con las plataformas privativas
 
+
+
+[Documentacion de los objetivos](https://github.com/arturocs/proyecto-CC/blob/master/docs/configuracion.md)
