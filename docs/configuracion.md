@@ -8,15 +8,15 @@
 
   
 
-  ![](/home/arturo/proyecto-CC/docs/images/claves.png)
+  ![](https://github.com/arturocs/proyecto-CC/raw/master/docs/images/claves.png)
 
-  ![](/home/arturo/proyecto-CC/docs/images/claves_en_github.png)
+  
 
 * Configuración correcta del nombre y correo electrónico para que aparezca en los *commits*.
 
   
 
-  ![](/home/arturo/proyecto-CC/docs/images/configuracion_git.png)
+  ![](https://github.com/arturocs/proyecto-CC/raw/master/docs/images/configuracion_git.png)
 
   
 
@@ -24,12 +24,11 @@
 
   
 
-  ![](/home/arturo/proyecto-CC/docs/images/perfil.png)
+  ![](https://github.com/arturocs/proyecto-CC/raw/master/docs/images/perfil.png)
+
+  Incrementar la seguridad de nuestra cuenta en GitHub activando el segundo  factor de autenticación.
 
   
 
-* Incrementar la seguridad de nuestra cuenta en GitHub activando el segundo  factor de autenticación.
 
-  
-
-![](/home/arturo/proyecto-CC/docs/images/autenticacion_2_pasos.png)
+![](https://github.com/arturocs/proyecto-CC/raw/master/docs/images/autenticacion_2_pasos.png)
