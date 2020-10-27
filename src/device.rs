@@ -2,7 +2,7 @@ use crate::error::Error;
 use crate::plugin::Plugin;
 use serde::{Deserialize, Serialize};
 use std::net::IpAddr;
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 pub(crate) struct Device {
     name: String,
     active: bool,
@@ -24,7 +24,7 @@ impl Device {
             ip,
         }
     }
-    fn without_plugin(name: &str, read_only: bool, ip: IpAddr) -> Device {
+    pub fn without_plugin(name: &str, read_only: bool, ip: IpAddr) -> Device {
         Self {
             name: name.to_string(),
             active: false,
