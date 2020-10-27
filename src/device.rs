@@ -24,6 +24,15 @@ impl Device {
             ip,
         }
     }
+    fn without_plugin(name: &str, read_only: bool, ip: IpAddr) -> Device {
+        Self {
+            name: name.to_string(),
+            active: false,
+            read_only,
+            plugin: None,
+            ip,
+        }
+    }
     fn on(&self) -> Result<(), Error> {
         todo!()
     }
