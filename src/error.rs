@@ -9,16 +9,18 @@ pub(crate) struct Error {
 
 #[macro_export]
 macro_rules! error {
+    //string literals
     ($details:tt) => {
         Error::new($details, file!(), line!())
     };
-    ($details:item) => {
+    //&str
+    ($details:expr) => {
         Error::new($details, file!(), line!())
     };
 }
 
 impl Error {
-    pub fn new(details: &str, file: &str, line: u32) -> Self {
+    pub(crate) fn new(details: &str, file: &str, line: u32) -> Self {
         Self {
             details: details.to_string(),
             file : file.to_string(),
