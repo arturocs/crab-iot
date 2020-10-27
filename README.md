@@ -18,7 +18,7 @@ El interruptor puede ser encendido y apagado manualmente o mediante un mensaje. 
 
 He elegido Rust y su ecosistema porque es un lenguaje moderno y rápido con el que estoy familiarizado. Sus herramientas principales son:
 
-* rustup: Gestor de versiones del compilador de rust
+* rustup: Gestor de versiones del compilador de rust.
 * cargo: Herramienta multiusos que entre otras muchas cosas incluye gestión y descarga de dependencias, módulo de tests de alto nivel, creación de documentación y sistema de construcción.
 
 
@@ -41,7 +41,7 @@ Para comprobar que el proyecto compila correctamente basta con instalar cargo y 
 
 #### Roadmap
 
-El roadmap puede encontrarse aquí.
+El roadmap puede encontrarse [aquí](https://github.com/arturocs/crab-iot/blob/master/docs/roadmap.md).
 
 
 
