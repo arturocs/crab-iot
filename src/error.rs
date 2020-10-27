@@ -1,15 +1,33 @@
-use std::fmt::{self, Debug};
+use std::fmt;
 
-#[derive(Debug, PartialEq)]
-pub(crate) struct Error<T>
-where
-    T: Debug,
-{
-    details: T,
+#[derive(PartialEq, Debug)]
+pub(crate) struct Error {
+    detalles: String,
+    archivo: String,
+    linea: u32,
 }
 
-impl<T: Debug> fmt::Display for Error<T> {
+macro_rules! error {
+    ($descripcion:tt) => {
+        Error::new($descripcion, file!(), line!())
+    };
+    ($descripcion:item) => {
+        Error::new($descripcion, file!(), line!())
+    };
+}
+
+impl Error {
+    pub fn new(detalles: &str, archivo: &str, linea: u32) -> Self {
+        Self {
+            detalles: detalles.to_string(),
+            archivo : archivo.to_string(),
+            linea,
+        }
+    }
+}
+
+impl fmt::Display for Error {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{:?}", self)
+        write!(f, "{}", self.detalles)
     }
 }
