@@ -11,9 +11,6 @@ lto = true
 codegen-units = 1
 panic = "abort"
 
-[dependencies]
-rusqlite = "0.24.1"
-
 [dependencies.rusqlite]
 version = "0.24.1"
 features = ["bundled"]
