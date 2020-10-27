@@ -27,7 +27,7 @@ Para comprobar que el proyecto compila correctamente basta con instalar cargo y 
 
 
 
-#### Módulos implementados
+#### Módulos creados
 
 * [device](https://github.com/arturocs/crab-iot/blob/master/src/device.rs)
 
