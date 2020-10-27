@@ -1,0 +1,4 @@
+entidad:
+ - src/dispositivo.rs
+ - src/error.rs
+ - src/plugin.rs
