@@ -1,5 +1,5 @@
-use std::path::PathBuf;
 use crate::error::Error;
+use std::path::PathBuf;
 
 pub(crate) struct Plugin {
     nombre_dispositivo: String,
@@ -8,10 +8,13 @@ pub(crate) struct Plugin {
 }
 
 impl Plugin {
-    fn cargar(ruta: &str) -> Plugin {
+    fn cargar(nombre: &str, ruta: &str) -> Plugin {
         todo!()
     }
-    fn ejecutar() -> Result<(), Error<String>> {
+    fn ejecutar(&self) -> Result<(), Error<String>> {
+        todo!()
+    }
+    fn parar_ejecucion(&self) -> Result<(), Error<String>> {
         todo!()
     }
 }
