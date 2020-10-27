@@ -3,19 +3,19 @@ use std::path::PathBuf;
 use serde::{Serialize, Deserialize};
 #[derive(Serialize, Deserialize, Debug)]
 pub(crate) struct Plugin {
-    nombre_dispositivo: String,
-    id_dispositivo: String,
-    ruta_plugin: PathBuf,
+    device_name: String,
+    device_id: String,
+    plugin_path: PathBuf,
 }
 
 impl Plugin {
-    fn cargar(nombre: &str, ruta: &str) -> Plugin {
+    fn load(nombre: &str, ruta: &str) -> Plugin {
         todo!()
     }
-    fn ejecutar(&self) -> Result<(), Error> {
+    fn execute(&self) -> Result<(), Error> {
         todo!()
     }
-    fn parar_ejecucion(&self) -> Result<(), Error> {
+    fn stop_execution(&self) -> Result<(), Error> {
         todo!()
     }
 }

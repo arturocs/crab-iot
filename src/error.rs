@@ -2,32 +2,32 @@ use std::fmt;
 
 #[derive(PartialEq, Debug)]
 pub(crate) struct Error {
-    detalles: String,
-    archivo: String,
-    linea: u32,
+    details: String,
+    file: String,
+    line: u32,
 }
 
 macro_rules! error {
-    ($descripcion:tt) => {
-        Error::new($descripcion, file!(), line!())
+    ($details:tt) => {
+        Error::new($details, file!(), line!())
     };
-    ($descripcion:item) => {
-        Error::new($descripcion, file!(), line!())
+    ($details:item) => {
+        Error::new($details, file!(), line!())
     };
 }
 
 impl Error {
-    pub fn new(detalles: &str, archivo: &str, linea: u32) -> Self {
+    pub fn new(details: &str, file: &str, line: u32) -> Self {
         Self {
-            detalles: detalles.to_string(),
-            archivo : archivo.to_string(),
-            linea,
+            details: details.to_string(),
+            file : file.to_string(),
+            line,
         }
     }
 }
 
 impl fmt::Display for Error {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}", self.detalles)
+        write!(f, "{}", self.details)
     }
 }
