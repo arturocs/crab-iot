@@ -16,7 +16,13 @@ impl Device {
         todo!()
     }
     fn new(name: &str, read_only: bool, ip: IpAddr, plugin: Plugin) -> Device {
-        todo!()
+        Self {
+            name: name.to_string(),
+            active: false,
+            read_only,
+            plugin: Some(plugin),
+            ip,
+        }
     }
     fn on(&self) -> Result<(), Error> {
         todo!()
