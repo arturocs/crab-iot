@@ -41,7 +41,7 @@ Para comprobar que el proyecto compila correctamente basta con instalar cargo y 
 
 #### Roadmap
 
-El roadmap puede encontrarse [aquí](https://github.com/arturocs/crab-iot/blob/master/docs/roadmap.md).
+El roadmap y las historias de usuario pueden encontrarse [aquí](https://github.com/arturocs/crab-iot/blob/master/docs/roadmap.md).
 
 
 
