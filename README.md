@@ -27,6 +27,24 @@ Para comprobar que el proyecto compila correctamente basta con instalar cargo y 
 
 
 
+#### Módulos implementados
+
+* [device](https://github.com/arturocs/crab-iot/blob/master/src/device.rs)
+
+* [device_list](https://github.com/arturocs/crab-iot/blob/master/src/device_list.rs)
+
+* [plugin](https://github.com/arturocs/crab-iot/blob/master/src/plugin.rs)
+
+* [error](https://github.com/arturocs/crab-iot/blob/master/src/error.rs)
+
+  
+
+#### Roadmap
+
+El roadmap puede encontrarse aquí.
+
+
+
 #### Dependencias
 
 Para la base de datos he optado por usar [rusqlite](https://github.com/rusqlite/rusqlite), una interfaz en Rust para sqlite. A pesar de que sqlite no escala bien con el numero de peticiones, su consumo de recursos es bastante limitado. Además, ya que Crab-IoT está orientado a instalaciones privadas, no se espera que  el número de usuarios simultáneos sea muy alto.
