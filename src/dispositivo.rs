@@ -7,7 +7,7 @@ pub(crate) struct Dispositivo {
     nombre: String,
     activo: bool,
     solo_lectura: bool,
-    plugin: Plugin,
+    plugin: Option<Plugin>,
     ip: IpAddr,
 }
 
