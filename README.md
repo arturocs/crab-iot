@@ -30,14 +30,12 @@ Para comprobar que el proyecto compila correctamente basta con instalar cargo y 
 #### Módulos creados
 
 * [device](https://github.com/arturocs/crab-iot/blob/master/src/device.rs)
-
 * [device_list](https://github.com/arturocs/crab-iot/blob/master/src/device_list.rs)
-
 * [plugin](https://github.com/arturocs/crab-iot/blob/master/src/plugin.rs)
-
 * [error](https://github.com/arturocs/crab-iot/blob/master/src/error.rs)
+* [tests](https://github.com/arturocs/crab-iot/blob/master/tests/lib.rs)
 
-  
+
 
 #### Roadmap
 
