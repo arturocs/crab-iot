@@ -23,6 +23,10 @@ He elegido Rust y su ecosistema porque es un lenguaje moderno y rápido con el q
 
 
 
+Para comprobar que el proyecto compila correctamente basta con instalar cargo y ejecutar `cargo check`
+
+
+
 #### Dependencias
 
 Para la base de datos he optado por usar [rustqlite](https://github.com/rusqlite/rusqlite), una interfaz en Rust para sqlite. A pesar de que sqlite no escala bien con el numero de peticiones, su consumo de recursos es bastante limitado. Además, ya que Crab-IoT está orientado a instalaciones privadas, no se espera que  el número de usuarios simultáneos sea muy alto.
