@@ -7,6 +7,7 @@ pub(crate) struct Error {
     line: u32,
 }
 
+#[macro_export]
 macro_rules! error {
     ($details:tt) => {
         Error::new($details, file!(), line!())
