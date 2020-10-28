@@ -1,16 +1,15 @@
-
+use super::device_attributes::DeviceAttributes;
 use crate::error::Error;
 use crate::plugin::Plugin;
-use super::device_attributes::DeviceAttributes;
 use serde::{Deserialize, Serialize};
 use std::net::IpAddr;
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
-pub(crate) struct RWDevice (DeviceAttributes);
+pub(crate) struct RWDevice(DeviceAttributes);
 
 impl RWDevice {
     fn new(name: &str, ip: IpAddr, plugin: Plugin) -> Self {
-        Self (DeviceAttributes{
+        Self(DeviceAttributes {
             name: name.to_string(),
             active: false,
             plugin: Some(plugin),
@@ -18,7 +17,7 @@ impl RWDevice {
         })
     }
     pub fn without_plugin(name: &str, ip: IpAddr) -> Self {
-        Self (DeviceAttributes{
+        Self(DeviceAttributes {
             name: name.to_string(),
             active: false,
             plugin: None,

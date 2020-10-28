@@ -9,8 +9,8 @@ mod error;
 mod plugin;
 use std::net::{IpAddr, Ipv4Addr};
 
-use device::Device;
 use device::rdevice::RDevice;
+use device::Device;
 use device_list::DeviceList;
 
 #[test]

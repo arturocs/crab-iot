@@ -1,6 +1,6 @@
 use crate::error::Error;
+use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
-use serde::{Serialize, Deserialize};
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
 pub(crate) struct Plugin {
     device_name: String,

@@ -1,9 +1,9 @@
 pub mod device_attributes;
 pub mod rdevice;
 pub mod rwdevice;
+use self::{rdevice::RDevice, rwdevice::RWDevice};
 use serde::{Deserialize, Serialize};
 use std::net::IpAddr;
-use self::{rdevice::RDevice, rwdevice::RWDevice};
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
 pub(crate) enum Device {

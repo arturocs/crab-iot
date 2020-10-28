@@ -23,7 +23,7 @@ impl Error {
     pub(crate) fn new(details: &str, file: &str, line: u32) -> Self {
         Self {
             details: details.to_string(),
-            file : file.to_string(),
+            file: file.to_string(),
             line,
         }
     }
