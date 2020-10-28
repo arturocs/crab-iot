@@ -1,5 +1,4 @@
-use crate::error::Error;
-use crate::{device::Device, *};
+use crate::{device::Device, error::Error, *};
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
