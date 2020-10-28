@@ -29,7 +29,10 @@ Para comprobar que el proyecto compila correctamente basta con instalar cargo y 
 
 #### Módulos creados
 
-* [device](https://github.com/arturocs/crab-iot/blob/master/src/device.rs)
+* [device](https://github.com/arturocs/crab-iot/blob/master/src/device/mod.rs)
+  * [device_attributes](https://github.com/arturocs/crab-iot/blob/master/src/device/device_attributes.rs)
+  * [rdevice](https://github.com/arturocs/crab-iot/blob/master/src/device/rdevice.rs)
+  * [rwdevice](https://github.com/arturocs/crab-iot/blob/master/src/device/rwdevice.rs)
 * [device_list](https://github.com/arturocs/crab-iot/blob/master/src/device_list.rs)
 * [plugin](https://github.com/arturocs/crab-iot/blob/master/src/plugin.rs)
 * [error](https://github.com/arturocs/crab-iot/blob/master/src/error.rs)
@@ -48,8 +51,6 @@ El roadmap y las historias de usuario pueden encontrarse [aquí](https://github.
 Para la base de datos he optado por usar [rusqlite](https://github.com/rusqlite/rusqlite), una interfaz en Rust para sqlite. A pesar de que sqlite no escala bien con el numero de peticiones, su consumo de recursos es bastante limitado. Además, ya que Crab-IoT está orientado a instalaciones privadas, no se espera que  el número de usuarios simultáneos sea muy alto.
 
 Para la API REST he optado por la librería [warp](https://github.com/seanmonstar/warp), una librería bastante rápida y moderna que permite implementar API REST con relativa facilidad.
-
-
 
 
 
