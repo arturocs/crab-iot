@@ -1,37 +1,29 @@
+
 use crate::error::Error;
 use crate::plugin::Plugin;
+use super::device_attributes::DeviceAttributes;
 use serde::{Deserialize, Serialize};
 use std::net::IpAddr;
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
-pub(crate) struct Device {
-    name: String,
-    active: bool,
-    read_only: bool,
-    plugin: Option<Plugin>,
-    ip: IpAddr,
-}
 
-impl Device {
-    fn search() -> Result<Vec<IpAddr>, Error> {
-        todo!()
-    }
-    fn new(name: &str, read_only: bool, ip: IpAddr, plugin: Plugin) -> Device {
-        Self {
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
+pub(crate) struct RWDevice (DeviceAttributes);
+
+impl RWDevice {
+    fn new(name: &str, ip: IpAddr, plugin: Plugin) -> Self {
+        Self (DeviceAttributes{
             name: name.to_string(),
             active: false,
-            read_only,
             plugin: Some(plugin),
             ip,
-        }
+        })
     }
-    pub fn without_plugin(name: &str, read_only: bool, ip: IpAddr) -> Device {
-        Self {
+    pub fn without_plugin(name: &str, ip: IpAddr) -> Self {
+        Self (DeviceAttributes{
             name: name.to_string(),
             active: false,
-            read_only,
             plugin: None,
             ip,
-        }
+        })
     }
     fn on(&self) -> Result<(), Error> {
         todo!()
