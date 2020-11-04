@@ -9,9 +9,9 @@ impl DeviceList {
         Self(list)
     }
     pub fn to_json(&self) -> Result<String, Error> {
-        serde_json::to_string(&self).map_err(|e| error!(&e.to_string()))
+        serde_json::to_string(&self).map_err(|e| error!(e))
     }
     pub fn from_json(json: &str) -> Result<DeviceList, Error> {
-        serde_json::from_str(json).map_err(|e| error!(&e.to_string()))
+        serde_json::from_str(json).map_err(|e| error!(e))
     }
 }

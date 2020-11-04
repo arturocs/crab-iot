@@ -20,7 +20,7 @@ macro_rules! error {
 }
 
 impl Error {
-    pub(crate) fn new(details: &str, file: &str, line: u32) -> Self {
+    pub(crate) fn new(details: impl fmt::Display, file: &str, line: u32) -> Self {
         Self {
             details: details.to_string(),
             file: file.to_string(),
@@ -31,6 +31,6 @@ impl Error {
 
 impl fmt::Display for Error {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}", self.details)
+        write!(f, "{:#?}", self.details)
     }
 }
