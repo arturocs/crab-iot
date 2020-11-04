@@ -42,14 +42,14 @@ Durante este milestone incluye las  se desarrollará un sistema de automatizaci�
 
 Este milestone cubre tareas que si bien no son estrictamente necesarias, mejoran la calidad del proyecto y/o la de su desarrollo. Por tanto estas mejoras serán implementadas conforme el resto milestones vayan avanzando. [Enlace al milestone correspondiente en github](https://github.com/arturocs/crab-iot/milestone/2)
 
-**Historias de usuario relacionadas**
+**Issues de usuario relacionadas**
 
-* [HU - Tipo de dato Error](https://github.com/arturocs/crab-iot/issues/9)
+* [Tipo de dato Error](https://github.com/arturocs/crab-iot/issues/9)
 
-* [HU - Microbenchmarks](https://github.com/arturocs/crab-iot/issues/7)                        
+* [Microbenchmarks](https://github.com/arturocs/crab-iot/issues/7)                        
 
-* [HU - Minimizar overhead de conexión](https://github.com/arturocs/crab-iot/issues/8)
+* [Minimizar overhead de conexión](https://github.com/arturocs/crab-iot/issues/8)
 
-* [HU - Añadir soporte para conexión cifrada](https://github.com/arturocs/crab-iot/issues/3)
+* [Añadir soporte para conexión cifrada](https://github.com/arturocs/crab-iot/issues/3)
 
   
