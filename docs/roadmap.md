@@ -6,59 +6,32 @@ La planificación de este proyecto se divide en cinco milestones, que se desarro
 
 ### 1. API Rest
 
-Al finalizar este milestone la API rest para que cualquier frontend pueda interactuar con Crab-IoT estará lista. No obstante la funcionalidad de la API en ese momento será un tanto limitada ya que la comunicación con los dispositivos IoT aun no estará lista. [Enlace al milestone correspondiente en github](https://github.com/arturocs/crab-iot/milestone/4)
+Al finalizar este milestone la API rest para que cualquier frontend pueda interactuar con Crab-IoT estará lista. No obstante la funcionalidad de la API en ese momento será un tanto limitada ya que la comunicación con los dispositivos IoT aun no ha sido implementada. [Enlace al milestone correspondiente en github](https://github.com/arturocs/crab-iot/milestone/4)
 
 **Historias de usuario relacionadas**
-
-* [HU - Elegir librería para la API rest](https://github.com/arturocs/crab-iot/issues/15)
-
-* [HU - Implementacion inicial de la API rest](https://github.com/arturocs/crab-iot/issues/23)
-
-* [HU - Enlazar dispositivo con Crab-IoT](https://github.com/arturocs/crab-iot/issues/24)
-
-* [HU - Buscar dispositivos en red local](https://github.com/arturocs/crab-iot/issues/10)
-
-
-
-### 2. Almacenamiento permanente
-
-Durante este milestone se va a implementar el sistema de bases de datos, gracias al cual crab-iot tendrá almacenamiento persistente. Para poder iniciar la implementación de este milestone es necesario que ya haya implementado al menos un prototipo de la API rest. [Enlace al milestone correspondiente en github](https://github.com/arturocs/crab-iot/milestone/7)
-
-**Historias de usuario relacionadas**
-
-* [HU - Elegir sistema de base de datos](https://github.com/arturocs/crab-iot/issues/12)
-
-* [HU - Implementación inicial de la base de datos](https://github.com/arturocs/crab-iot/issues/22)
-
-* [HU - Listar dispositivos enlazados](https://github.com/arturocs/crab-iot/issues/14)
-
-
-
-
-### 3. Sistema de plugins
-
-En este milestone se va a desarrollar un sistema de plugins. Dichos plugins podrán ser descargados desde crab-iot cada vez que se vaya a añadir un dispositivo nuevo al hogar. [Enlace al milestone correspondiente en github](https://github.com/arturocs/crab-iot/milestone/5)
-
-**Historias de usuario relacionadas**
-
-* [HU - Sistema de plugins para dispositivos](https://github.com/arturocs/crab-iot/issues/6)           
-
-* [HU - Consultar el estado de un dispositivo](https://github.com/arturocs/crab-iot/issues/1)             
 
 * [HU - Cambiar estado de un dispositivo](https://github.com/arturocs/crab-iot/issues/2)
+* [HU - Consultar información recopilada por un dispositivo](https://github.com/arturocs/crab-iot/issues/1)
 
- 
+### 2. Sistema de plugins
 
-### 4. Automatización de tareas
+En este milestone se va a desarrollar un sistema de plugins. Dichos plugins podrán ser descargados desde crab-iot cada vez que se vaya a añadir un dispositivo nuevo al hogar. Este milestone cubre la mayoria de interacciones entre dispositivos y crab-iot [Enlace al milestone correspondiente en github](https://github.com/arturocs/crab-iot/milestone/5)
+
+**Historias de usuario relacionadas**
+
+* [HU - Añadir soporte para nuevos dispositivos facilmente](https://github.com/arturocs/crab-iot/issues/6) 
+  * [Buscar dispositivos en red local](https://github.com/arturocs/crab-iot/issues/10)
+  * [Interacción con dispositivos fuera de la red local](https://github.com/arturocs/crab-iot/issues/11)
+  * [Listar dispositivos enlazados](https://github.com/arturocs/crab-iot/issues/14)
+  * [Enlazar dispositivo con Crab-IoT](https://github.com/arturocs/crab-iot/issues/24)
+
+### 3. Automatización de tareas
 
 Durante este milestone incluye las  se desarrollará un sistema de automatización de tareas para los dispositivos IoT, ya sea mediante un temporizador de acciones o basado en eventos. [Enlace al milestone correspondiente en github](https://github.com/arturocs/crab-iot/milestone/6)
 
 **Historias de usuario relacionadas**
 
-* [HU - Temporizadores para cambios de estado](https://github.com/arturocs/crab-iot/issues/4)
-
-* [HU - Automatizar acciones](https://github.com/arturocs/crab-iot/issues/5)
-
+* [HU - Automatización de acciones](https://github.com/arturocs/crab-iot/issues/5)
 
 
 ---
