@@ -16,13 +16,7 @@ El interruptor puede ser encendido y apagado manualmente o mediante un mensaje. 
 
 #### Herramientas
 
-He elegido Rust y su ecosistema porque es un lenguaje moderno y rápido con el que estoy familiarizado. Sus herramientas principales son:
-
-* rustup: Gestor de versiones del compilador de rust.
-* cargo: Herramienta multiusos que entre otras muchas cosas incluye gestión y descarga de dependencias, módulo de tests de alto nivel, creación de documentación y sistema de construcción.
-
-
-
+He elegido Rust y su ecosistema porque es un lenguaje moderno y rápido con el que estoy familiarizado. 
 Para comprobar que el proyecto compila correctamente basta con instalar cargo y ejecutar `cargo check`
 
 
