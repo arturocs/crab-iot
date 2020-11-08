@@ -8,3 +8,6 @@ run:
 test: 
 	cargo build --workspace
 	cargo test
+
+check:
+	cargo check --workspace
