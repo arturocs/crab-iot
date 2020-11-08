@@ -15,6 +15,14 @@ use serde_json::json;
 #[test]
 fn deserialize_device_list() {
     let devices_from_json = DeviceList::from_json(r#"{"Empty_device":"127.0.0.1"}"#).unwrap();
+    let devices = DeviceList::new(vec![(
+        "Empty_device".to_string(),
+        "127.0.0.1".parse().unwrap(),
+    )]);
+    dbg!(&devices.to_json());
+    assert_eq!(devices, devices_from_json);
+}
+
 #[test]
 fn get_device_status() {
     let mockup_device = RDevice::new(
