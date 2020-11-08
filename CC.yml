@@ -1,14 +1,14 @@
 entidad:
- - src/device.rs
- - src/error.rs
- - src/plugin.rs
- - src/device_list.rs
+  - src/device.rs
+  - src/error.rs
+  - src/plugin.rs
+  - src/device_list.rs
 
 lenguaje:
- - rust
- 
+  - rust
+
 test:
- - tests/lib.rs
+  - tests/lib.rs
 
 fichero_tareas:
- - Makefile
+  - Makefile
