@@ -14,8 +14,8 @@ use device::Device;
 use device_list::DeviceList;
 
 #[test]
-fn test_vacio() {
-    assert_eq!((), ());
+fn deserialize_device_list() {
+    let devices_from_json = DeviceList::from_json(r#"{"Empty_device":"127.0.0.1"}"#).unwrap();
 }
 #[test]
 fn deserialize_device_list() {
