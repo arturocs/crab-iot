@@ -27,4 +27,7 @@ fn set_device_status() {
 }
 
 #[test]
+fn get_status_from_api() {
+    let response : serde_json::Value = reqwest::blocking::get("http://127.0.0.1:3030/api").unwrap().json().unwrap();
+    assert_eq!(response.to_string(),r#"{"on":false}"#)
 }
