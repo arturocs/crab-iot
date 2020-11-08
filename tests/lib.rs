@@ -33,6 +33,9 @@ fn get_device_status() {
 fn set_device_status() {
     let mockup_device = RWDevice::new(
         "mockup_device",
+        "fake_plugin",
+        "./target/debug/libfake_plugin.so",
+        "127.0.0.1",
     )
     .unwrap();
     let status = mockup_device.set_status(&json!({"on":true})).unwrap();
