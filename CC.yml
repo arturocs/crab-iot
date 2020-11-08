@@ -3,3 +3,12 @@ entidad:
  - src/error.rs
  - src/plugin.rs
  - src/device_list.rs
+
+lenguaje:
+ - rust
+ 
+test:
+ - ./tests/lib.rs
+
+fichero_tareas:
+ - ./Makefile
