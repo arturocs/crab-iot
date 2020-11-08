@@ -7,10 +7,8 @@ mod device_list;
 mod error;
 #[path = "../src/plugin.rs"]
 mod plugin;
-use std::net::{IpAddr, Ipv4Addr};
 
-use device::rdevice::RDevice;
-use device::Device;
+use device::{rdevice::RDevice, rwdevice::RWDevice, Readable, Writable};
 use device_list::DeviceList;
 
 #[test]
@@ -18,15 +16,15 @@ fn deserialize_device_list() {
     let devices_from_json = DeviceList::from_json(r#"{"Empty_device":"127.0.0.1"}"#).unwrap();
 }
 #[test]
-fn deserialize_device_list() {
-    let devices_from_json = DeviceList::from_json(
-        r#"[{"ReadOnly":{"name":"prueba","active":false,"plugin":null,"ip":"127.0.0.1"}}]"#,
+fn set_device_status() {
+    let mockup_device = RWDevice::new(
+        "mockup_device",
     )
     .unwrap();
-    let devices = DeviceList::new(vec![Device::ReadOnly(RDevice::without_plugin(
-        "prueba",
-        IpAddr::V4(Ipv4Addr::new(127, 0, 0, 1)),
-    ))]);
-    dbg!(&devices);
-    assert_eq!(devices, devices_from_json);
+    let status = mockup_device.set_status(&json!({"on":true})).unwrap();
+    let data = status.get("data").unwrap();
+    assert_eq!(data, &json!({"on":true}));
+}
+
+#[test]
 }
