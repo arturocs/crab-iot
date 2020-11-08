@@ -8,7 +8,7 @@ lenguaje:
  - rust
  
 test:
- - ./tests/lib.rs
+ - tests/lib.rs
 
 fichero_tareas:
- - ./Makefile
+ - Makefile
