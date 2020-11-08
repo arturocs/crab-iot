@@ -1,13 +1,15 @@
-use crate::{device::Device, error::Error, *};
+use crate::{error::Error, *};
 use serde::{Deserialize, Serialize};
+use std::{collections::BTreeMap, net::IpAddr};
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
-pub(crate) struct DeviceList(Vec<Device>);
+pub(crate) struct DeviceList(BTreeMap<String, IpAddr>);
 
 impl DeviceList {
-    pub fn new(list: Vec<Device>) -> Self {
-        Self(list)
+    pub fn new(list: Vec<(String, IpAddr)>) -> Self {
+        Self(list.into_iter().collect())
     }
+
     pub fn to_json(&self) -> Result<String, Error> {
         serde_json::to_string(&self).map_err(|e| error!(e))
     }
