@@ -1,36 +1,39 @@
-use super::device_attributes::DeviceAttributes;
-use crate::error::Error;
 use crate::plugin::Plugin;
-use serde::{Deserialize, Serialize};
+use serde_json::Value;
+use std::error::Error;
 use std::net::IpAddr;
 
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
-pub(crate) struct RDevice(DeviceAttributes);
+use super::Readable;
 
-impl RDevice {
-    fn new(name: &str, ip: IpAddr, plugin: Plugin) -> Self {
-        Self(DeviceAttributes {
+#[derive(Debug)]
+pub(crate) struct RDevice {
+    name: String,
+    plugin: Plugin,
+    ip: IpAddr,
+}
+
+impl Readable for RDevice {
+    fn new(
+        name: &str,
+        plugin_name: &str,
+        plugin_path: &str,
+        ip: &str,
+    ) -> Result<Self, Box<dyn Error>> {
+        Ok(Self {
             name: name.to_string(),
-            active: false,
-            plugin: Some(plugin),
-            ip,
+            plugin: Plugin::load(plugin_name, plugin_path)?,
+            ip: "127.0.0.1".parse()?,
         })
     }
-    pub fn without_plugin(name: &str, ip: IpAddr) -> Self {
-        Self(DeviceAttributes {
-            name: name.to_string(),
-            active: false,
-            plugin: None,
-            ip,
-        })
+    fn get_status(&self) -> Result<Value, Box<dyn Error>> {
+        self.plugin.get_status()
     }
-    fn on(&self) -> Result<(), Error> {
-        todo!()
+
+    fn get_ip(&self) -> IpAddr {
+        *&self.ip
     }
-    fn off(&self) -> Result<(), Error> {
-        todo!()
-    }
-    fn get_status(&self) -> Result<String, Error> {
-        todo!()
+
+    fn get_name(&self) -> String {
+        (&self).name.clone()
     }
 }
