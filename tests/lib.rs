@@ -10,11 +10,25 @@ mod plugin;
 
 use device::{rdevice::RDevice, rwdevice::RWDevice, Readable, Writable};
 use device_list::DeviceList;
+use serde_json::json;
 
 #[test]
 fn deserialize_device_list() {
     let devices_from_json = DeviceList::from_json(r#"{"Empty_device":"127.0.0.1"}"#).unwrap();
+#[test]
+fn get_device_status() {
+    let mockup_device = RDevice::new(
+        "mockup_device",
+        "fake_plugin",
+        "./target/debug/libfake_plugin.so",
+        "127.0.0.1",
+    )
+    .unwrap();
+    let status = mockup_device.get_status().unwrap();
+    let data = status.get("data").unwrap();
+    assert_eq!(data, &json!({"on":false}));
 }
+
 #[test]
 fn set_device_status() {
     let mockup_device = RWDevice::new(
