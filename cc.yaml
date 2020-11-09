@@ -1,10 +1,11 @@
 entidad:
-  - src/device/rdevice.rs
-  - src/device/rwdevice.rs
-  - src/device/mod.rs
-  - src/error.rs
-  - src/plugin.rs
-  - src/device_list.rs
+  - device/src/rdevice.rs
+  - device/src/rwdevice.rs
+  - device/src/lib.rs
+  - device/src/error.rs
+  - device/src/plugin.rs
+  - device/src/device_list.rs
+  - bench/src/bench.rs
 
 lenguaje:
   - rust
