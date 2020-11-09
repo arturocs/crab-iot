@@ -24,21 +24,19 @@ Para comprobar que el proyecto compila correctamente basta con instalar cargo y 
 #### Módulos creados
 
 * [device](https://github.com/arturocs/crab-iot/blob/master/src/device/mod.rs)
-  * [device_attributes](https://github.com/arturocs/crab-iot/blob/master/src/device/device_attributes.rs)
+
   * [rdevice](https://github.com/arturocs/crab-iot/blob/master/src/device/rdevice.rs)
   * [rwdevice](https://github.com/arturocs/crab-iot/blob/master/src/device/rwdevice.rs)
+
 * [device_list](https://github.com/arturocs/crab-iot/blob/master/src/device_list.rs)
+
 * [plugin](https://github.com/arturocs/crab-iot/blob/master/src/plugin.rs)
+
 * [error](https://github.com/arturocs/crab-iot/blob/master/src/error.rs)
+
 * [tests](https://github.com/arturocs/crab-iot/blob/master/tests/lib.rs)
 
-
-
-#### Roadmap
-
-El roadmap y las historias de usuario pueden encontrarse [aquí](https://github.com/arturocs/crab-iot/blob/master/docs/roadmap.md).
-
-
+  
 
 #### Dependencias
 
@@ -50,3 +48,6 @@ Para la API REST he optado por la librería [warp](https://github.com/seanmonsta
 
 [Documentacion de los objetivos](https://github.com/arturocs/proyecto-CC/blob/master/docs/configuracion.md)
 
+[Roadmap](https://github.com/arturocs/crab-iot/blob/master/docs/roadmap.md)
+
+[Justificación de herramientas de testeo](https://github.com/arturocs/crab-iot/blob/master/docs/justificacion_tests.md)
