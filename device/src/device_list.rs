@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use std::{collections::BTreeMap, net::IpAddr};
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
-pub(crate) struct DeviceList(BTreeMap<String, IpAddr>);
+pub struct DeviceList(BTreeMap<String, IpAddr>);
 
 impl DeviceList {
     pub fn new(list: Vec<(String, IpAddr)>) -> Self {
