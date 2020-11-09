@@ -2,11 +2,11 @@ build:
 	cargo build --workspace
 
 run:
-	cargo build --workspace
+	cargo build --release --manifest-path=fake_plugin/Cargo.toml
 	cargo run
 
 test: 
-	cargo build --workspace
+	cargo build --manifest-path=fake_plugin/Cargo.toml
 	cargo test
 
 check:
