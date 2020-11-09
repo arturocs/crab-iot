@@ -1,5 +1,7 @@
 entidad:
-  - src/device.rs
+  - src/device/rdevice.rs
+  - src/device/rwdevice.rs
+  - src/device/mod.rs
   - src/error.rs
   - src/plugin.rs
   - src/device_list.rs
