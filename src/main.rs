@@ -1,9 +1,3 @@
-#![allow(dead_code, unused_variables, unused_macros)]
-
-mod device;
-mod device_list;
-mod error;
-mod plugin;
 use device::{rwdevice::RWDevice, Readable};
 use warp::Filter;
 
