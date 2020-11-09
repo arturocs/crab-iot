@@ -6,7 +6,8 @@ entidad:
   - device/src/plugin.rs
   - device/src/device_list.rs
   - bench/src/bench.rs
-
+  - fake_plugin/src/lib.rs
+  
 lenguaje:
   - rust
 
