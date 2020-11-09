@@ -20,7 +20,7 @@ impl Plugin {
         let json: Value = serde_json::from_str(s).map_err(|e| error!(e))?;
         Ok(json)
     }
-    pub(crate) fn set_status(&self, status: &Value) -> Result<Value,  Error> {
+    pub(crate) fn set_status(&self, status: &Value) -> Result<Value, Error> {
         let status_str = CString::new(status.to_string()).unwrap().into_raw();
         let cstr = unsafe {
             let func: Symbol<unsafe extern "C" fn(*const c_char) -> *mut c_char> =
