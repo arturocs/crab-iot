@@ -16,8 +16,16 @@ El interruptor puede ser encendido y apagado manualmente o mediante un mensaje. 
 
 #### Herramientas
 
-He elegido Rust y su ecosistema porque es un lenguaje moderno y rápido con el que estoy familiarizado. 
-Para comprobar que el proyecto compila correctamente basta con instalar cargo y ejecutar `cargo check`
+He elegido Rust y su ecosistema porque es un lenguaje moderno y rápido con el que estoy familiarizado.  Para compilar este proyecto es necesario instalar cargo y la versión 1.47 de rust.
+
+#### Instrucciones
+
+* Aunque el proyecto aun está en sus fases iniciales, ya tiene una API rest básica de prueba. Puede ponerse a funcionar con `make run`
+
+* Para comprobar que el proyecto compila correctamente basta ejecutar `make check`.
+
+* Para correr los test hay que ejecutar `make test`.
+* Para correr los microbenchmarks test hay que ejecutar `make benchmark`.
 
 
 
