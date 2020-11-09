@@ -1,15 +1,6 @@
 #![allow(dead_code, unused_variables, unused_macros)]
-#[path = "../src/device/mod.rs"]
-mod device;
-#[path = "../src/device_list.rs"]
-mod device_list;
-#[path = "../src/error.rs"]
-mod error;
-#[path = "../src/plugin.rs"]
-mod plugin;
+use device::{device_list::DeviceList, rdevice::RDevice, rwdevice::RWDevice, Readable, Writable};
 
-use device::{rdevice::RDevice, rwdevice::RWDevice, Readable, Writable};
-use device_list::DeviceList;
 use serde_json::json;
 
 #[test]
@@ -53,6 +44,9 @@ fn set_device_status() {
 
 #[test]
 fn get_status_from_api() {
-    let response : serde_json::Value = reqwest::blocking::get("http://127.0.0.1:3030/api").unwrap().json().unwrap();
-    assert_eq!(response.to_string(),r#"{"on":false}"#)
+    let response: serde_json::Value = reqwest::blocking::get("http://127.0.0.1:3030/api")
+        .unwrap()
+        .json()
+        .unwrap();
+    assert_eq!(response.to_string(), r#"{"on":false}"#)
 }
