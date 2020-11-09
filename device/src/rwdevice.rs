@@ -1,22 +1,17 @@
-use crate::plugin::Plugin;
-use serde_json::Value;
-use crate::{error::Error, *};
 use super::{Readable, Writable};
+use crate::plugin::Plugin;
+use crate::{error::Error, *};
+use serde_json::Value;
 use std::net::IpAddr;
 #[derive(Debug)]
-pub(crate) struct RWDevice {
+pub struct RWDevice {
     name: String,
     plugin: Plugin,
     ip: IpAddr,
 }
 
 impl Readable for RWDevice {
-    fn new(
-        name: &str,
-        plugin_name: &str,
-        plugin_path: &str,
-        ip: &str,
-    ) -> Result<Self,  Error> {
+    fn new(name: &str, plugin_name: &str, plugin_path: &str, ip: &str) -> Result<Self, Error> {
         Ok(Self {
             name: name.to_string(),
             plugin: Plugin::load(plugin_name, plugin_path).map_err(|e| error!(e))?,
