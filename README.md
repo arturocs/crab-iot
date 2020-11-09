@@ -39,7 +39,7 @@ He elegido Rust y su ecosistema porque es un lenguaje moderno y rápido con el q
 * [tests](https://github.com/arturocs/crab-iot/blob/master/tests/lib.rs)
 
 * [benchs](https://github.com/arturocs/crab-iot/blob/master/bench/src/bench.rs)
-
+* [fake_plugin](https://github.com/arturocs/crab-iot/tree/master/fake_plugin)
   
 
 #### Dependencias
