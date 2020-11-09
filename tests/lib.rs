@@ -1,6 +1,6 @@
-#![allow(dead_code, unused_variables, unused_macros)]
+//#![allow(dead_code, unused_variables, unused_macros)]
+use std::process::Command;
 use device::{device_list::DeviceList, rdevice::RDevice, rwdevice::RWDevice, Readable, Writable};
-
 use serde_json::json;
 
 #[test]
@@ -41,9 +41,13 @@ fn set_device_status() {
     let data = status.get("data").unwrap();
     assert_eq!(data, &json!({"on":true}));
 }
-
 #[test]
 fn get_status_from_api() {
+    Command::new("make")
+        .arg("run")
+        .output()
+        .expect("failed to execute process");
+
     let response: serde_json::Value = reqwest::blocking::get("http://127.0.0.1:3030/api")
         .unwrap()
         .json()
