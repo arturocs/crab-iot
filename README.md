@@ -31,18 +31,17 @@ He elegido Rust y su ecosistema porque es un lenguaje moderno y rápido con el q
 
 #### Módulos creados
 
-* [device](https://github.com/arturocs/crab-iot/blob/master/src/device/mod.rs)
+* [device](https://github.com/arturocs/crab-iot/blob/master/device/src/lib.rs)
 
-  * [rdevice](https://github.com/arturocs/crab-iot/blob/master/src/device/rdevice.rs)
-  * [rwdevice](https://github.com/arturocs/crab-iot/blob/master/src/device/rwdevice.rs)
-
-* [device_list](https://github.com/arturocs/crab-iot/blob/master/src/device_list.rs)
-
-* [plugin](https://github.com/arturocs/crab-iot/blob/master/src/plugin.rs)
-
-* [error](https://github.com/arturocs/crab-iot/blob/master/src/error.rs)
+  * [rdevice](https://github.com/arturocs/crab-iot/blob/master/device/src/rdevice.rs)
+  * [rwdevice](https://github.com/arturocs/crab-iot/blob/master/device/src/rwdevice.rs)
+  * [device_list](https://github.com/arturocs/crab-iot/blob/master/device/src/device_list.rs)
+  * [plugin](https://github.com/arturocs/crab-iot/blob/master/device/src/plugin.rs)
+  * [error](https://github.com/arturocs/crab-iot/blob/master/device/src/error.rs)
 
 * [tests](https://github.com/arturocs/crab-iot/blob/master/tests/lib.rs)
+
+* [benchs](https://github.com/arturocs/crab-iot/blob/master/bench/src/bench.rs)
 
   
 
