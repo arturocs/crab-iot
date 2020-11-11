@@ -1,4 +1,5 @@
 use device::{device_list::DeviceList, rdevice::RDevice, rwdevice::RWDevice, Readable, Writable};
+use pretty_assertions::assert_eq;
 use serde_json::json;
 
 #[test]

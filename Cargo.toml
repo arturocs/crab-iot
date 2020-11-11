@@ -19,7 +19,7 @@ codegen-units = 1
 [dependencies]
 device = {path = "./device"}
 serde_json = "1.0"
-
+pretty_assertions = "0.6.1"
 
 [workspace]
 members = ["fake_plugin", "bench", "device"]
