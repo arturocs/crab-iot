@@ -1,12 +1,19 @@
 use libloading::{Library, Symbol};
 use serde_json::Value;
-use std::{ffi::CString, os::raw::c_char};
+use std::{ffi::CString, os::raw::c_char, path::PathBuf};
 
 use crate::{error::Error, *};
 #[derive(Debug)]
-pub(crate) struct Plugin {
+pub struct Plugin {
     device_name: String,
     dylib: Library,
+    libary_path: PathBuf,
+}
+
+impl PartialEq for Plugin {
+    fn eq(&self, other: &Self) -> bool {
+        self.libary_path == other.libary_path && self.device_name == other.device_name
+    }
 }
 
 impl Plugin {
@@ -35,6 +42,7 @@ impl Plugin {
         Ok(Self {
             device_name: name.to_string(),
             dylib: Library::new(path).map_err(|e| error!(e))?,
+            libary_path: PathBuf::from(path),
         })
     }
 }
