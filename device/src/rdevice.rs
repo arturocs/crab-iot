@@ -4,7 +4,7 @@ use crate::{error::Error, *};
 use serde_json::Value;
 use std::net::IpAddr;
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct RDevice {
     name: String,
     plugin: Plugin,
