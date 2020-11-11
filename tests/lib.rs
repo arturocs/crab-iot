@@ -39,3 +39,19 @@ fn set_device_status() {
     let data = status.get("data").unwrap();
     assert_eq!(data, &json!({"on":true}));
 }
+
+#[test]
+fn set_status_after_device_deserialization() {
+    let device = RWDevice::from_json(
+        r#"{"name":"device",
+        "plugin":{
+            "device_name":"plugin",
+            "libary_path":"./target/debug/libfake_plugin.so"
+        },
+        "ip":"127.0.0.1"}"#,
+    )
+    .unwrap();
+    let status = device.set_status(&json!({"on":true})).unwrap();
+    let data = status.get("data").unwrap();
+    assert_eq!(data, &json!({"on":true}));
+}
