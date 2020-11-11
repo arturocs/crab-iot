@@ -5,12 +5,13 @@ pub mod plugin;
 pub mod rdevice;
 pub mod rwdevice;
 use crate::error::Error;
+use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::net::IpAddr;
 pub(crate) fn local_search() -> Result<Vec<IpAddr>, Error> {
     todo!()
 }
-pub trait Readable: PartialEq {
+pub trait Readable<'a>: PartialEq + Serialize + Deserialize<'a> {
     fn new(name: &str, plugin_name: &str, plugin_path: &str, ip: &str) -> Result<Self, Error>
     where
         Self: std::marker::Sized;
@@ -18,6 +19,6 @@ pub trait Readable: PartialEq {
     fn get_name(&self) -> String;
     fn get_status(&self) -> Result<Value, Error>;
 }
-pub trait Writable: Readable {
+pub trait Writable<'a>: Readable<'a> {
     fn set_status(&self, status: &Value) -> Result<Value, Error>;
 }
