@@ -5,6 +5,7 @@ pub mod plugin;
 pub mod rdevice;
 pub mod rwdevice;
 use crate::error::Error;
+use plugin::Plugin;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::net::IpAddr;
@@ -18,6 +19,17 @@ pub trait Readable<'a>: PartialEq + Serialize + Deserialize<'a> {
     fn get_ip(&self) -> IpAddr;
     fn get_name(&self) -> String;
     fn get_status(&self) -> Result<Value, Error>;
+    fn get_mut_plugin(&mut self) -> &mut Plugin;
+    fn to_json(&self) -> Result<String, Error> {
+        serde_json::to_string(&self).map_err(|e| error!(e))
+    }
+    fn from_json(json: &'a str) -> Result<Self, Error> {
+        let deserialize =
+            |json| -> Result<Self, Error> { serde_json::from_str(json).map_err(|e| error!(e)) };
+        let mut device = deserialize(json)?;
+        device.get_mut_plugin().reload_after_deserialize()?;
+        Ok(device)
+    }
 }
 pub trait Writable<'a>: Readable<'a> {
     fn set_status(&self, status: &Value) -> Result<Value, Error>;
