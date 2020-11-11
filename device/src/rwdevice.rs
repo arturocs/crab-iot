@@ -3,7 +3,8 @@ use crate::plugin::Plugin;
 use crate::{error::Error, *};
 use serde_json::Value;
 use std::net::IpAddr;
-#[derive(Debug, PartialEq)]
+use serde::{Deserialize, Serialize};
+#[derive(Debug, PartialEq,  Serialize, Deserialize)]
 pub struct RWDevice {
     name: String,
     plugin: Plugin,
