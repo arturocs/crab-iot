@@ -10,7 +10,7 @@ use std::net::IpAddr;
 pub(crate) fn local_search() -> Result<Vec<IpAddr>, Error> {
     todo!()
 }
-pub trait Readable {
+pub trait Readable: PartialEq {
     fn new(name: &str, plugin_name: &str, plugin_path: &str, ip: &str) -> Result<Self, Error>
     where
         Self: std::marker::Sized;
