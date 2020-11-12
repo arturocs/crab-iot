@@ -40,7 +40,7 @@ pub extern "C" fn get_status() -> *mut c_char {
 
 #[no_mangle]
 pub unsafe extern "C" fn set_status(status_str: *mut c_char) -> *mut c_char {
-    let status_cstr =  CString::from_raw(status_str) ;
+    let status_cstr = CString::from_raw(status_str);
     let status_struct: Result<Status, serde_json::Error> =
         serde_json::from_str(status_cstr.to_str().unwrap());
     match status_struct {
