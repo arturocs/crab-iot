@@ -34,6 +34,10 @@ pub extern "C" fn get_status() -> *mut c_char {
     .into_raw()
 }
 
+/// # Safety
+///
+/// status_str should come from from calling into_raw() on a CString.
+
 #[no_mangle]
 pub unsafe extern "C" fn set_status(status_str: *mut c_char) -> *mut c_char {
     let status_cstr =  CString::from_raw(status_str) ;
