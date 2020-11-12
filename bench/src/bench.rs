@@ -50,10 +50,28 @@ pub fn criterion_benchmark3(c: &mut Criterion) {
     });
 }
 
+pub fn criterion_benchmark4(c: &mut Criterion) {
+    c.bench_function("RWDevice::from_json", |b| {
+        b.iter(|| {
+            let device = RWDevice::from_json(
+                r#"{"name":"device",
+                "plugin":{
+                    "device_name":"plugin",
+                    "libary_path":"../target/debug/libfake_plugin.so"
+                },
+                "ip":"127.0.0.1"}"#,
+            )
+            .unwrap();
+            black_box(device)
+        })
+    });
+}
+
 criterion_group!(
     benches,
     criterion_benchmark1,
     criterion_benchmark2,
     criterion_benchmark3,
+    criterion_benchmark4,
 );
 criterion_main!(benches);
