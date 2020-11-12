@@ -24,7 +24,7 @@ impl<'a> Readable<'a> for RWDevice {
     }
 
     fn get_ip(&self) -> IpAddr {
-        *&self.ip
+        self.ip
     }
 
     fn get_name(&self) -> &str {

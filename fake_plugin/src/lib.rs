@@ -11,10 +11,10 @@ struct Status {
 }
 impl Status {
     fn get(&self) -> bool {
-        *&self.on.load(Ordering::Relaxed)
+        self.on.load(Ordering::Relaxed)
     }
     fn set(&self, new_state: bool) {
-        &self.on.store(new_state, Ordering::Relaxed);
+        self.on.store(new_state, Ordering::Relaxed);
     }
 }
 static STATUS: Lazy<Status> = Lazy::new(|| Status {

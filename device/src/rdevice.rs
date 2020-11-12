@@ -24,7 +24,7 @@ impl<'a> Readable<'a> for RDevice {
     }
 
     fn get_ip(&self) -> IpAddr {
-        *&self.ip
+        self.ip
     }
 
     fn get_mut_plugin(&mut self) -> &mut Plugin {
