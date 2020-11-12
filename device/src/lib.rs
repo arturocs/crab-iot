@@ -24,9 +24,7 @@ pub trait Readable<'a>: PartialEq + Serialize + Deserialize<'a> {
         serde_json::to_string(&self).map_err(|e| error!(e))
     }
     fn from_json(json: &'a str) -> Result<Self, Error> {
-        let deserialize =
-            |json| -> Result<Self, Error> { serde_json::from_str(json).map_err(|e| error!(e)) };
-        let mut device = deserialize(json)?;
+        let mut device: Self = serde_json::from_str(json).map_err(|e| error!(e))?;
         device.get_mut_plugin().reload_after_deserialize()?;
         Ok(device)
     }
