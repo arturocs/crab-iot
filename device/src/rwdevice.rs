@@ -27,8 +27,8 @@ impl<'a> Readable<'a> for RWDevice {
         *&self.ip
     }
 
-    fn get_name(&self) -> String {
-        (&self).name.clone()
+    fn get_name(&self) -> &str {
+        &self.name
     }
 
     fn get_mut_plugin(&mut self) -> &mut Plugin {

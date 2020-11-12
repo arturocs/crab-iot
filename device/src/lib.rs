@@ -17,7 +17,7 @@ pub trait Readable<'a>: PartialEq + Serialize + Deserialize<'a> {
     where
         Self: std::marker::Sized;
     fn get_ip(&self) -> IpAddr;
-    fn get_name(&self) -> String;
+    fn get_name(&self) -> &str;
     fn get_status(&self) -> Result<Value, Error>;
     fn get_mut_plugin(&mut self) -> &mut Plugin;
     fn to_json(&self) -> Result<String, Error> {
