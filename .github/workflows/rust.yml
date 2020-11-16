@@ -13,9 +13,8 @@ jobs:
           profile: minimal
           toolchain: stable
           override: true
-      - uses: actions-rs/cargo@v1
-        with:
-          command: check --workspace
+      - name: Check
+        run: cargo check --workspace
 
   test:
     name: Test Suite
@@ -28,8 +27,8 @@ jobs:
           toolchain: stable
           override: true
       - uses: actions-rs/cargo@v1
-      - name: Build
-        run: cargo build --workspace
+      - name: Build plugin
+        run: cargo build --manifest-path=fake_plugin/Cargo.toml
       - name: Run tests
         run: cargo test --verbose
 
@@ -60,8 +59,6 @@ jobs:
           toolchain: stable
           override: true
       - run: rustup component add clippy
-      - uses: actions-rs/cargo@v1
-        with:
-          command: clippy
-          args: -- -D warnings --all
+      - name: Clippy
+        run: cargo clippy --workspace
 
