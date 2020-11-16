@@ -15,7 +15,7 @@ jobs:
           override: true
       - uses: actions-rs/cargo@v1
         with:
-          command: check
+          command: check --workspace
 
   test:
     name: Test Suite
@@ -28,8 +28,10 @@ jobs:
           toolchain: stable
           override: true
       - uses: actions-rs/cargo@v1
-        with:
-          command: test
+      - name: Build
+        run: cargo build --workspace
+      - name: Run tests
+        run: cargo test --verbose
 
   fmt:
     name: Rustfmt
@@ -44,7 +46,7 @@ jobs:
       - run: rustup component add rustfmt
       - uses: actions-rs/cargo@v1
         with:
-          command: fmt
+          command: fmt 
           args: --all -- --check
 
   clippy:
@@ -61,5 +63,5 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: clippy
-          args: -- -D warnings
+          args: -- -D warnings --all
 
