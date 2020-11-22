@@ -9,7 +9,7 @@ use plugin::Plugin;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::net::IpAddr;
-pub(crate) fn local_search() -> Result<Vec<IpAddr>, Error> {
+pub fn local_search() -> Result<Vec<IpAddr>, Error> {
     todo!()
 }
 pub trait Readable<'a>: PartialEq + Serialize + Deserialize<'a> {
@@ -18,8 +18,11 @@ pub trait Readable<'a>: PartialEq + Serialize + Deserialize<'a> {
         Self: std::marker::Sized;
     fn get_ip(&self) -> IpAddr;
     fn get_name(&self) -> &str;
-    fn get_status(&self) -> Result<Value, Error>;
+    fn get_plugin(&self) -> &Plugin;
     fn get_mut_plugin(&mut self) -> &mut Plugin;
+    fn get_status(&self) -> Result<Value, Error> {
+        self.get_plugin().get_status()
+    }
     fn to_json(&self) -> Result<String, Error> {
         serde_json::to_string(&self).map_err(|e| error!(e))
     }
