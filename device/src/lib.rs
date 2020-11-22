@@ -33,5 +33,7 @@ pub trait Readable<'a>: PartialEq + Serialize + Deserialize<'a> {
     }
 }
 pub trait Writable<'a>: Readable<'a> {
-    fn set_status(&self, status: &Value) -> Result<Value, Error>;
+    fn set_status(&mut self, status: &Value) -> Result<Value, Error> {
+        self.get_mut_plugin().set_status(status)
+    }
 }
