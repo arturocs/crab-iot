@@ -36,7 +36,7 @@ pub fn criterion_benchmark2(c: &mut Criterion) {
 
 pub fn criterion_benchmark3(c: &mut Criterion) {
     c.bench_function("set_status", |b| {
-        let mockup_device = RWDevice::new(
+        let mut mockup_device = RWDevice::new(
             "mockup_device",
             "fake_plugin",
             "../target/release/libfake_plugin.so",
