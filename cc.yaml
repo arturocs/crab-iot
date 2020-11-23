@@ -7,7 +7,10 @@ entidad:
   - device/src/device_list.rs
   - bench/src/bench.rs
   - fake_plugin/src/lib.rs
-  
+  - weather_fake_plugin/src/lib.rs
+  - experimental_plugin/src/lib.rs
+  - utils/src/weather_json_schema.rs
+
 lenguaje:
   - rust
 
