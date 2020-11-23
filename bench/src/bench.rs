@@ -12,7 +12,7 @@ pub fn criterion_benchmark1(c: &mut Criterion) {
         )
         .unwrap();
         b.iter(|| {
-            let status = black_box(mockup_device.get_status().unwrap());
+            let status = black_box(mockup_device.get_status(&json!({})).unwrap());
             black_box(status.get("data").unwrap());
         })
     });
