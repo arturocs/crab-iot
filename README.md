@@ -55,3 +55,5 @@ Para la API REST he optado por la librería [warp](https://github.com/seanmonsta
 [Roadmap](https://github.com/arturocs/crab-iot/blob/master/docs/roadmap.md)
 
 [Justificación de las herramientas elegidas](https://github.com/arturocs/crab-iot/blob/master/docs/justificacion_herramientas.md)
+
+[Documentación sobre docker](./docs/documentación_docker.md)
