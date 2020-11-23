@@ -22,7 +22,7 @@ static STATUS: Lazy<Status> = Lazy::new(|| Status {
 });
 
 #[no_mangle]
-pub extern "C" fn get_status() -> *mut c_char {
+pub extern "C" fn get_status(_: *mut c_char) -> *mut c_char {
     CString::new(format!(
         r#"{{
             "type": "switch",
