@@ -2,7 +2,6 @@ use super::{Readable, Writable};
 use crate::plugin::Plugin;
 use crate::{error::Error, *};
 use serde::{Deserialize, Serialize};
-use serde_json::Value;
 use std::net::IpAddr;
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct RWDevice {
@@ -19,9 +18,6 @@ impl<'a> Readable<'a> for RWDevice {
             ip: "127.0.0.1".parse().map_err(|e| error!(e))?,
         })
     }
-    fn get_status(&self) -> Result<Value, Error> {
-        self.plugin.get_status()
-    }
 
     fn get_ip(&self) -> IpAddr {
         self.ip
@@ -31,12 +27,12 @@ impl<'a> Readable<'a> for RWDevice {
         &self.name
     }
 
+    fn get_plugin(&self) -> &Plugin {
+        &self.plugin
+    }
+
     fn get_mut_plugin(&mut self) -> &mut Plugin {
         &mut self.plugin
     }
 }
-impl<'a> Writable<'a> for RWDevice {
-    fn set_status(&self, status: &Value) -> Result<Value, Error> {
-        self.plugin.set_status(status)
-    }
-}
+impl<'a> Writable<'a> for RWDevice {}
