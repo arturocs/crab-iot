@@ -22,7 +22,7 @@ fn get_device_status() {
         "127.0.0.1",
     )
     .unwrap();
-    let status = mockup_device.get_status().unwrap();
+    let status = mockup_device.get_status(&json!({})).unwrap();
     let data = status.get("data").unwrap();
     assert_eq!(data, &json!({"on":false}));
 }
