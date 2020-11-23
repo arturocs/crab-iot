@@ -29,7 +29,7 @@ fn get_device_status() {
 
 #[test]
 fn set_device_status() {
-    let mockup_device = RWDevice::new(
+    let mut mockup_device = RWDevice::new(
         "mockup_device",
         "fake_plugin",
         "./target/debug/libfake_plugin.so",
@@ -43,7 +43,7 @@ fn set_device_status() {
 
 #[test]
 fn set_status_after_device_deserialization() {
-    let device = RWDevice::from_json(
+    let mut device = RWDevice::from_json(
         r#"{"name":"device",
         "plugin":{
             "device_name":"plugin",
