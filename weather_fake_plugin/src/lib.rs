@@ -1,7 +1,7 @@
 use once_cell::sync::Lazy;
 use serde::Deserialize;
-use utils::weather_json_schema;
 use std::{ffi::CString, os::raw::c_char};
+use utils::weather_json_schema;
 
 static WEATHER: Lazy<weather_json_schema::Root> = Lazy::new(|| {
     let json = include_str!("../1769_es.json");
