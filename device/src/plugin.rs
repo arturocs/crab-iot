@@ -18,12 +18,13 @@ impl PartialEq for Plugin {
 }
 
 impl Plugin {
-    pub(crate) fn get_status(&self) -> Result<Value, Error> {
+    pub(crate) fn get_status(&self, query: &Value) -> Result<Value, Error> {
+        let query_str = CString::new(query.to_string()).unwrap().into_raw();
         if let Some(lib) = &self.dylib {
             let cstr = unsafe {
-                let func: Symbol<unsafe extern "C" fn() -> *mut c_char> =
+                let func: Symbol<unsafe extern "C" fn(*const c_char) -> *mut c_char> =
                     lib.get(b"get_status").map_err(|e| error!(e))?;
-                CString::from_raw(func())
+                CString::from_raw(func(query_str))
             };
             let s = cstr.to_str().map_err(|e| error!(e))?;
             let json: Value = serde_json::from_str(s).map_err(|e| error!(e))?;
