@@ -28,7 +28,7 @@ jobs:
           override: true
       - uses: actions-rs/cargo@v1
       - name: Build plugin
-        run: cargo build --manifest-path=fake_plugin/Cargo.toml
+        run: cargo build --workspace
       - name: Run tests
         run: cargo test --verbose
 
