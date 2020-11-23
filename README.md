@@ -35,12 +35,12 @@ He elegido Rust y su ecosistema porque es un lenguaje moderno y rápido con el q
   * [device_list](https://github.com/arturocs/crab-iot/blob/master/device/src/device_list.rs)
   * [plugin](https://github.com/arturocs/crab-iot/blob/master/device/src/plugin.rs)
   * [error](https://github.com/arturocs/crab-iot/blob/master/device/src/error.rs)
-
 * [tests](https://github.com/arturocs/crab-iot/blob/master/tests/lib.rs)
-
 * [benchs](https://github.com/arturocs/crab-iot/blob/master/bench/src/bench.rs)
 * [fake_plugin](https://github.com/arturocs/crab-iot/tree/master/fake_plugin)
-  
+* [weather_fake_plugin](https://github.com/arturocs/crab-iot/tree/master/weather_fake_plugin)
+* [experimental_plugin](https://github.com/arturocs/crab-iot/tree/master/experimental_plugin)
+* [utils](https://github.com/arturocs/crab-iot/tree/master/utils)
 
 #### Dependencias
 
