@@ -22,12 +22,24 @@ REPOSITORY                 TAG                 IMAGE ID            CREATED      
 debian                   latest              ef05c61d5112        5 days ago          114MB
 fedora                   latest              b3048463dcef        11 days ago         175MB
 ubuntu                   latest              d70eaf7277ea        4 weeks ago         72.9MB
+ubuntu                   18.04               56def654ec22        8 weeks ago         63.2MB
 alpine                   latest              d6e46aa2470d        4 weeks ago         5.57MB
 busybox                  latest              f0b02e9d092d        5 weeks ago         1.23MB
 centos                   latest              0d120b6ccaa8        3 months ago        215MB
 ```
 
-En un principio decidí utilizar la imagen de Busybox, pero no tardé en darme cuenta de que no era viable, así que pasé a considerar la siguiente imagen mas pequeña, Alpine. El problema es que ya sabía cuanto iba a ocupar dicha imagen, pues entre las imágenes oficiales de Rust, ya hay imágenes de Alpine. Así que tratando de explorar otras posibilidades finalmente me decanté por una imagen de la ultima LTS Ubuntu, cuya imagen base se sitúa en unos razonables 73MB. De esta forma obtendría una imagen de tamaño pequeño-mediano, con gran soporte comunitario y cuyas herramientas son sobradamente conocidas.
+En un principio decidí utilizar la imagen de Busybox, pero no tardé en darme cuenta de que no era viable, así que pasé a considerar la siguiente imagen mas pequeña, Alpine. El problema es que ya sabía cuanto iba a ocupar dicha imagen, pues entre las imágenes oficiales de Rust, ya hay imágenes de Alpine. Así que tratando de explorar otras posibilidades finalmente me decanté por una imagen de la Ubuntu 18.04 LTS, cuya imagen base se sitúa en unos razonables 63MB. De esta forma obtendría una imagen de tamaño pequeño-mediano, con gran soporte comunitario y cuyas herramientas son sobradamente conocidas.
+
+
+
+Tras generar la imagen podemos ver como su tamaño ha resultado ser inferior al de la imagen oficial de rust slim.
+
+```
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+arturocs/crab-iot   latest              23955a504a62        5 seconds ago       678MB
+```
+
+
 
 ## Actualización automática
 
@@ -49,7 +61,9 @@ Activamos el servicio de actualización automática:
 
 ## Registros alternativos
 
-Para poder usar Github Container Registry hay que activar la funcionalidad, ya que aun está en beta.
+Para usar Github Container Registry he seguido las [instrucciones oficiales](https://docs.github.com/en/free-pro-team@latest/packages/managing-container-images-with-github-container-registry/pushing-and-pulling-docker-images).
+
+Primero hay que activar la funcionalidad, ya que aun está en beta.
 
 ![](./images/feature_preview.png)
 
