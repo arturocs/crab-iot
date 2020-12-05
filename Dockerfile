@@ -19,6 +19,7 @@ ENV RUSTUP_HOME=/usr/local/rustup \
 # 4. Eliminar paquetes innecesarios y sus dependencias
 # 5. Eliminar datos de los paquetes, ya que ocupan bastante y no son necesarios para la imagen
 # 6. Crear un usuario sin privilegios
+# 7. Cambiamos la propiedad al usuario 
 
 RUN apt-get update; \
     apt-get install -y --no-install-recommends \
@@ -37,7 +38,8 @@ RUN apt-get update; \
     wget ca-certificates\
     ; \
     rm -rf /var/lib/apt/lists/*; \
-    useradd crabiot;
+    useradd crabiot; \
+    chown crabiot /app/test;
 
 # Fijar el directorio de trabajo en donde se va a montar el repositorio
 WORKDIR /app/test
