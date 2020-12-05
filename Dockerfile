@@ -1,5 +1,6 @@
 # Este dockerfile está basado en https://github.com/arturocs/crab-iot/blob/master/Dockerfile, 
-# Usar Ubuntu 18.04 LTS como imagen base
+# Usar Ubuntu 18.04 LTS como imagen base, ya que su tamaño es inferior a la de Ubuntu 20.04, aun
+# tiene muchos años de soporte y para este caso particular usar la ultima LTS no aporta ninguna ventaja
 FROM ubuntu:18.04
 
 # Primero se fijan las variables de entorno necesarias para rustup
@@ -17,6 +18,7 @@ ENV RUSTUP_HOME=/usr/local/rustup \
 #    en los directorios de rustup u cargo
 # 4. Eliminar paquetes innecesarios y sus dependencias
 # 5. Eliminar datos de los paquetes, ya que ocupan bastante y no son necesarios para la imagen
+# 6. Crear un usuario sin privilegios
 
 RUN apt-get update; \
     apt-get install -y --no-install-recommends \
@@ -34,10 +36,14 @@ RUN apt-get update; \
     apt-get remove -y --auto-remove \
     wget ca-certificates\
     ; \
-    rm -rf /var/lib/apt/lists/*;
+    rm -rf /var/lib/apt/lists/*; \
+    useradd crabiot;
 
 # Fijar el directorio de trabajo en donde se va a montar el repositorio
 WORKDIR /app/test
+
+# Cambiar al usuario sin privilegios
+USER crabiot
 
 # Ejcutamos make test cuando se inicie el contenedor
 CMD ["make", "test"]
