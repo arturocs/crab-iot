@@ -18,9 +18,9 @@ Crab-IoT es un hub de dispositivos IoT que provee una API REST para acceder fác
 
 #### Avance en el proyecto
 
-* Se refactorizado el código para aprovechar mejor el sistema de traits de rust, #41
-* Se ha diseñado un nuevo plugin que devuelve la información climática extraída de [este json](https://github.com/arturocs/crab-iot/blob/master/weather_fake_plugin/1769_es.json), #42
-* Se ha comezado a diseñar un sistema de plugins alternativo mas eficiente, #43
+* Se refactorizado el código para aprovechar mejor el sistema de traits de rust, puede verse proceso en la issue [#41](https://github.com/arturocs/crab-iot/issues/41)
+* Se ha diseñado un nuevo plugin que devuelve la información climática extraída de [este json](https://github.com/arturocs/crab-iot/blob/master/weather_fake_plugin/1769_es.json), puede verse proceso en la issue [#42](https://github.com/arturocs/crab-iot/issues/42)
+* Se ha comezado a diseñar un sistema de plugins alternativo mas eficiente, puede verse proceso en la issue [#43](https://github.com/arturocs/crab-iot/issues/43)
 
 
 
