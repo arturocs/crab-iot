@@ -19,8 +19,6 @@ ENV RUSTUP_HOME=/usr/local/rustup \
 # 4. Eliminar paquetes innecesarios y sus dependencias
 # 5. Eliminar datos de los paquetes, ya que ocupan bastante y no son necesarios para la imagen
 # 6. Crear un usuario sin privilegios
-# 7. Cambiamos la propiedad de /app/test al usuario 
-# 8. Damos permisos de escritura lectura y ejecución sobre la carpeta /app/test
 
 RUN apt-get update; \
     apt-get install -y --no-install-recommends \
@@ -39,9 +37,8 @@ RUN apt-get update; \
     wget ca-certificates\
     ; \
     rm -rf /var/lib/apt/lists/*; \
-    useradd crabiot; \
-    chown crabiot /app/test; \
-    chmod 777 /app/test; 
+    useradd crabiot; 
+
 
 # Fijar el directorio de trabajo en donde se va a montar el repositorio
 WORKDIR /app/test
@@ -49,7 +46,10 @@ WORKDIR /app/test
 # Cambiar al usuario sin privilegios
 USER crabiot
 
-# Ejcutamos make test cuando se inicie el contenedor
-CMD ["make", "test"]
+# Cuando se inicie el contenedor ejecutamos los siguientes pasos:
+# 1. Cambiamos la propiedad de /app/test al usuario sin privilegios
+# 2. Damos permisos de escritura lectura y ejecución sobre la carpeta /app/test
+# 3. Ejcutamos make test cuando
+CMD chown crabiot /app/test &&  chmod 777 /app/test && make test
 
 
