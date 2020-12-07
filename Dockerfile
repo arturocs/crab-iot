@@ -44,12 +44,13 @@ RUN apt-get update; \
 WORKDIR /app/test
 
 # Cambiar al usuario sin privilegios
-USER crabiot
+# USER crabiot
 
 # Cuando se inicie el contenedor ejecutamos los siguientes pasos:
 # 1. Cambiamos la propiedad de /app/test al usuario sin privilegios
 # 2. Damos permisos de escritura lectura y ejecución sobre la carpeta /app/test
 # 3. Ejcutamos make test cuando
+#CMD chown crabiot /app/test &&  chmod 777 /app/test && make test
 CMD chown crabiot /app/test &&  chmod 777 /app/test && make test
 
 
