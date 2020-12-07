@@ -18,7 +18,7 @@ ENV RUSTUP_HOME=/usr/local/rustup \
 #    en los directorios de rustup u cargo
 # 4. Eliminar paquetes innecesarios y sus dependencias
 # 5. Eliminar datos de los paquetes, ya que ocupan bastante y no son necesarios para la imagen
-# 6. Crear un usuario sin privilegios
+# 6. Crear un usuario sin privilegios llamado crabiot
 
 RUN apt-get update; \
     apt-get install -y --no-install-recommends \
@@ -37,19 +37,15 @@ RUN apt-get update; \
     wget ca-certificates\
     ; \
     rm -rf /var/lib/apt/lists/*; \
-    useradd crabiot; 
+    useradd  crabiot; 
 
 
 # Fijar el directorio de trabajo en donde se va a montar el repositorio
 WORKDIR /app/test
 
-# Cambiar al usuario sin privilegios
-USER crabiot
-
 # Cuando se inicie el contenedor ejecutamos los siguientes pasos:
 # 1. Cambiamos la propiedad de /app/test al usuario sin privilegios
-# 2. Damos permisos de escritura lectura y ejecución sobre la carpeta /app/test
-# 3. Ejcutamos make test cuando
-CMD chown crabiot /app/test &&  chmod 777 /app/test && make test
+# 2. Ejcutamos make test usando el usuario sin privilegios
+CMD chown -R crabiot /app/test && su crabiot -c " PATH=/usr/local/cargo/bin:$PATH make test"
 
 
