@@ -5,5 +5,4 @@ jobs:
   fast_finish: true
 cache: cargo
 script:
-  - cargo build --manifest-path=fake_plugin/Cargo.toml
-  - cargo test
+  - make test
