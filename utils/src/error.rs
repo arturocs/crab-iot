@@ -22,7 +22,7 @@ macro_rules! error {
 impl std::error::Error for Error {}
 
 impl Error {
-    pub fn new(details: impl fmt::Display, file: &str, line: u32) -> Self {
+    pub fn new<T: fmt::Display>(details: T, file: &str, line: u32) -> Self {
         Self {
             details: details.to_string(),
             file: file.to_string(),
