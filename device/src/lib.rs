@@ -20,7 +20,11 @@ pub trait Readable<'a>: PartialEq + Serialize + Deserialize<'a> {
     fn get_plugin(&self) -> &Plugin;
     fn get_mut_plugin(&mut self) -> &mut Plugin;
     fn get_status(&self, query: &Value) -> Result<Value, Error> {
-        self.get_plugin().get_status(query)
+        let query = json!({
+            "query":query,
+            "ip": self.get_ip()
+        });
+        self.get_plugin().get_status(&query)
     }
     fn to_json(&self) -> Result<String, Error> {
         serde_json::to_string(&self).map_err(|e| error!(e))
