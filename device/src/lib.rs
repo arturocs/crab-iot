@@ -1,14 +1,13 @@
 #![allow(dead_code, unused_variables, unused_macros)]
 pub mod device_list;
-pub mod error;
 pub mod plugin;
 pub mod rdevice;
 pub mod rwdevice;
-use crate::error::Error;
 use plugin::Plugin;
 use serde::{Deserialize, Serialize};
-use serde_json::Value;
+use serde_json::{Value, json};
 use std::net::IpAddr;
+use utils::{error::Error, *};
 pub fn local_search() -> Result<Vec<IpAddr>, Error> {
     todo!()
 }
