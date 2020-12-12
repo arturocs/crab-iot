@@ -26,7 +26,7 @@ fn set_device_status() {
     assert_eq!(status.get("on").unwrap(), true);
 }
 #[test]
-fn get_experimental_device_status() {
+fn get_device_status() {
     let mockup_device = RDevice::new(
         "fake_device",
         "fake_plugin",
