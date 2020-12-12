@@ -5,7 +5,7 @@ pub mod rdevice;
 pub mod rwdevice;
 use plugin::Plugin;
 use serde::{Deserialize, Serialize};
-use serde_json::{Value, json};
+use serde_json::{json, Value};
 use std::net::IpAddr;
 use utils::{error::Error, *};
 pub fn local_search() -> Result<Vec<IpAddr>, Error> {

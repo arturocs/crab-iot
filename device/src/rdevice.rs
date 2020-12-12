@@ -2,8 +2,8 @@ use std::net::IpAddr;
 
 use super::Readable;
 use crate::plugin::Plugin;
-use utils::{error::Error, *};
 use serde::{Deserialize, Serialize};
+use utils::{error::Error, *};
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct RDevice {
     name: String,

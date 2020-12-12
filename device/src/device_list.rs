@@ -1,6 +1,6 @@
-use utils::{error::Error, *};
 use serde::{Deserialize, Serialize};
 use std::{collections::BTreeMap, net::IpAddr};
+use utils::{error::Error, *};
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
 pub struct DeviceList(BTreeMap<String, IpAddr>);
