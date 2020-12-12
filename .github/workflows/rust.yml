@@ -27,10 +27,8 @@ jobs:
           toolchain: stable
           override: true
       - uses: actions-rs/cargo@v1
-      - name: Build plugin
-        run: make test
       - name: Run tests
-        run: cargo test --verbose
+        run: make test
 
   format:
     name: Rustfmt
