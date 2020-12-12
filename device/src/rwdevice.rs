@@ -1,8 +1,8 @@
 use super::{Readable, Writable};
 use crate::plugin::Plugin;
-use crate::{error::Error, *};
 use serde::{Deserialize, Serialize};
 use std::net::IpAddr;
+use utils::{error::Error, *};
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct RWDevice {
     name: String,
