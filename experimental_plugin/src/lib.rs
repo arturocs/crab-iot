@@ -17,12 +17,12 @@ struct Error {
 }
 
 #[no_mangle]
-pub extern "C" fn get_status(_: VecPieces) -> VecPieces {
-    let data = bincode::serialize(&Status {
-        on: AtomicBool::new(STATUS.get()),
-    })
-    .unwrap();
-    vec_to_pieces(data)
+pub extern "C" fn get_status(_: *const Value) -> *mut Result<Value, &'static str> {
+    let on = STATUS.load(Ordering::Relaxed);
+    let status = Box::new(Ok(json!({
+        "on": on ,
+    })));
+    Box::into_raw(status)
 }
 
 fn vec_to_pieces(mut v: Vec<u8>) -> VecPieces {
