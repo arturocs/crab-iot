@@ -1,6 +1,8 @@
+use std::net::IpAddr;
+
 use super::Readable;
 use crate::plugin::Plugin;
-use crate::{error::Error, *};
+use utils::{error::Error, *};
 use serde::{Deserialize, Serialize};
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct RDevice {
