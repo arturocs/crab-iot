@@ -10,36 +10,32 @@ fn deserialize_device_list() {
         "Empty_device".to_string(),
         "127.0.0.1".parse().unwrap(),
     )]);
-    dbg!(&devices.to_json());
     assert_eq!(devices, devices_from_json);
-}
-
-#[test]
-fn get_device_status() {
-    let mockup_device = RDevice::new(
-        "mockup_device",
-        "fake_plugin",
-        "./target/debug/libfake_plugin.so",
-        "127.0.0.1",
-    )
-    .unwrap();
-    let status = mockup_device.get_status(&json!({})).unwrap();
-    let data = status.get("data").unwrap();
-    assert_eq!(data, &json!({"on":false}));
 }
 
 #[test]
 fn set_device_status() {
     let mut mockup_device = RWDevice::new(
-        "mockup_device",
+        "fake_device",
         "fake_plugin",
-        "./target/debug/libfake_plugin.so",
+        "./target/debug/libexperimental_plugin.so",
         "127.0.0.1",
     )
     .unwrap();
     let status = mockup_device.set_status(&json!({"on":true})).unwrap();
-    let data = status.get("data").unwrap();
-    assert_eq!(data, &json!({"on":true}));
+    assert_eq!(status.get("on").unwrap(), true);
+}
+#[test]
+fn get_experimental_device_status() {
+    let mockup_device = RDevice::new(
+        "fake_device",
+        "fake_plugin",
+        "./target/debug/libexperimental_plugin.so",
+        "127.0.0.1",
+    )
+    .unwrap();
+    let status = mockup_device.get_status(&json!({})).unwrap();
+    assert_eq!(status.get("on").unwrap(), false);
 }
 
 #[test]
@@ -53,9 +49,9 @@ fn set_status_after_device_deserialization() {
         "ip":"127.0.0.1"}"#,
     )
     .unwrap();
-    let status = device.set_status(&json!({"on":true})).unwrap();
-    let data = status.get("data").unwrap();
-    assert_eq!(data, &json!({"on":true}));
+    let status = device.set_status(&mut json!({"on":true})).unwrap();
+    let data = status.get("on").unwrap().as_bool().unwrap();
+    assert_eq!(data, true);
 }
 
 #[test]
