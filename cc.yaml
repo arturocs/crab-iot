@@ -2,14 +2,13 @@ entidad:
   - device/src/rdevice.rs
   - device/src/rwdevice.rs
   - device/src/lib.rs
-  - device/src/error.rs
   - device/src/plugin.rs
   - device/src/device_list.rs
   - bench/src/bench.rs
   - fake_plugin/src/lib.rs
   - weather_fake_plugin/src/lib.rs
-  - experimental_plugin/src/lib.rs
   - utils/src/weather_json_schema.rs
+  - utils/src/error.rs
 
 lenguaje:
   - rust
