@@ -23,4 +23,4 @@ serde_json = "1.0"
 pretty_assertions = "0.6.1"
 serde = { version = "1.0", features = ["derive"] }
 [workspace]
-members = ["fake_plugin", "bench", "device", "weather_fake_plugin", "utils", "experimental_plugin"]
+members = ["fake_plugin", "bench", "device", "weather_fake_plugin", "utils"]
