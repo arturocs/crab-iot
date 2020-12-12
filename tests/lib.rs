@@ -18,7 +18,7 @@ fn set_device_status() {
     let mut mockup_device = RWDevice::new(
         "fake_device",
         "fake_plugin",
-        "./target/debug/libexperimental_plugin.so",
+        "./target/debug/libfake_plugin.so",
         "127.0.0.1",
     )
     .unwrap();
@@ -30,7 +30,7 @@ fn get_experimental_device_status() {
     let mockup_device = RDevice::new(
         "fake_device",
         "fake_plugin",
-        "./target/debug/libexperimental_plugin.so",
+        "./target/debug/libfake_plugin.so",
         "127.0.0.1",
     )
     .unwrap();
