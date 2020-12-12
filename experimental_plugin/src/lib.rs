@@ -2,20 +2,7 @@ use once_cell::sync::Lazy;
 use serde::{Deserialize, Serialize};
 use std::sync::atomic::{AtomicBool, Ordering};
 #[derive(Deserialize, Serialize)]
-struct Status {
-    on: AtomicBool,
-}
-impl Status {
-    fn get(&self) -> bool {
-        self.on.load(Ordering::Relaxed)
-    }
-    fn set(&self, new_state: bool) {
-        self.on.store(new_state, Ordering::Relaxed);
-    }
-}
-static STATUS: Lazy<Status> = Lazy::new(|| Status {
-    on: AtomicBool::new(false),
-});
+static STATUS: Lazy<AtomicBool> = Lazy::new(|| AtomicBool::new(false));
 
 #[repr(C)]
 #[derive(Deserialize)]
