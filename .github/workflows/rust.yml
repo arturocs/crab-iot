@@ -28,7 +28,7 @@ jobs:
           override: true
       - uses: actions-rs/cargo@v1
       - name: Build plugin
-        run: cargo build --workspace
+        run: make test
       - name: Run tests
         run: cargo test --verbose
 
