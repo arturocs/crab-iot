@@ -13,7 +13,7 @@ pub fn criterion_benchmark1(c: &mut Criterion) {
         .unwrap();
         b.iter(|| {
             let status = black_box(mockup_device.get_status(&json!({})).unwrap());
-            black_box(status.get("data").unwrap());
+            black_box(status.get("on").unwrap());
         })
     });
 }
@@ -45,7 +45,7 @@ pub fn criterion_benchmark3(c: &mut Criterion) {
         .unwrap();
         b.iter(|| {
             let status = black_box(mockup_device.set_status(&json!({"on":true})).unwrap());
-            black_box(status.get("data").unwrap());
+            black_box(status.get("on").unwrap());
         })
     });
 }
