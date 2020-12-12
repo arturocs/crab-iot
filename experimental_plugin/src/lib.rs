@@ -1,20 +1,8 @@
 use once_cell::sync::Lazy;
-use serde::{Deserialize, Serialize};
+use serde_json::{json, Value};
 use std::sync::atomic::{AtomicBool, Ordering};
-#[derive(Deserialize, Serialize)]
+use utils::{error::Error, *};
 static STATUS: Lazy<AtomicBool> = Lazy::new(|| AtomicBool::new(false));
-
-#[repr(C)]
-#[derive(Deserialize)]
-pub struct VecPieces {
-    data: usize,
-    size: usize,
-}
-
-#[derive(Deserialize, Serialize)]
-struct Error {
-    error: String,
-}
 
 #[no_mangle]
 pub extern "C" fn get_status(_: *const Value) -> *mut Result<Value, &'static str> {
@@ -25,36 +13,27 @@ pub extern "C" fn get_status(_: *const Value) -> *mut Result<Value, &'static str
     Box::into_raw(status)
 }
 
-fn vec_to_pieces(mut v: Vec<u8>) -> VecPieces {
-    VecPieces {
-        data: v.as_mut_ptr() as usize,
-        size: v.len(),
-    }
+fn ffi_error(error_msg: &str) -> *mut Result<Value, Error> {
+    Box::into_raw(Box::new(Err(error!(error_msg))))
 }
 
 /// # Safety
 ///
-/// status_data should come from from calling vec_to_pieces() on a Vec<u8>.
+/// status_data should come from from calling Box::into_raw() in a boxed serde_json::Value.
 
 #[no_mangle]
-pub unsafe extern "C" fn set_status(status_data: VecPieces) -> VecPieces {
-    let data = Vec::from_raw_parts(
-        status_data.data as *mut u8,
-        status_data.size,
-        status_data.size,
-    );
-    let status: Result<Status, _> = bincode::deserialize(&data);
-    match status {
-        Ok(s) => {
-            STATUS.set(s.get());
-            vec_to_pieces(data)
-        }
-        Err(e) => {
-            let err = Error {
-                error: e.to_string(),
-            };
-            let data = bincode::serialize(&err).unwrap();
-            vec_to_pieces(data)
-        }
+pub unsafe extern "C" fn set_status(status_data: *const Value) -> *mut Result<Value, Error> {
+    match status_data.as_ref() {
+        Some(v) => match v.get("on") {
+            Some(status) => match status {
+                Value::Bool(b) => {
+                    STATUS.store(*b, Ordering::Relaxed);
+                    Box::into_raw(Box::new(Ok(json! ({ "on": *STATUS }))))
+                }
+                _ => ffi_error("'on' value is not a boolean"),
+            },
+            None => ffi_error("Value does not contains 'on' field"),
+        },
+        None => ffi_error("Unable to dereference value"),
     }
 }
