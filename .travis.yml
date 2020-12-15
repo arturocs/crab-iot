@@ -3,5 +3,7 @@ rust:
   - stable
   
 cache: cargo
+install: 
+  - make build
 script:
   - make test
