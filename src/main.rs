@@ -36,10 +36,10 @@ async fn main() -> io::Result<()> {
             // enable logger - always register actix-web Logger middleware last
             .wrap(middleware::Logger::default())
             .service(
-                web::resource("/rdevice/forecast/{day}").route(web::get().to(get_fake_forecast)),
+                web::resource("/rdevices/forecast/{day}").route(web::get().to(get_fake_forecast)),
             )
             .service(
-                web::scope("/rwdevice")
+                web::scope("/rwdevices")
                     .route("/fake_switch", web::post().to(turn_switch))
                     .route("/fake_switch", web::get().to(get_switch_status)),
             )
