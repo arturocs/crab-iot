@@ -18,7 +18,7 @@ Crab-IoT es un hub de dispositivos IoT que provee una API REST para acceder fác
 
 #### Avance en el proyecto
 
-* Se ha rediseñado el sistema de plugins completamente para hacerlo mas eficiente, logrando una mejora del 70-75% en el intercambio de datos con el programa base. Puede verse el progreso en [#43](https://github.com/arturocs/crab-iot/issues/43).
+* El avance reciente del proyecto puede verse en la [documentación sobre microservicios](./docs/documentacion_microservicios.md)
 
 
 
@@ -32,5 +32,6 @@ Crab-IoT es un hub de dispositivos IoT que provee una API REST para acceder fác
 
 [Documentación sobre la integración contina](./docs/documentacion_integracion_continua.md)
 
+[Documentación sobre la integración contina](./docs/documentacion_integracion_continua.md)
 
-
+[Documentacion sobre microservicios](./docs/documentacion_microservicios.md)
