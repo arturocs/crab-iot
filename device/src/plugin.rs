@@ -2,7 +2,6 @@ use libloading::{Library, Symbol};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::path::PathBuf;
-use utils::{error::Error, *};
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Plugin {
     device_name: String,
@@ -18,42 +17,42 @@ impl PartialEq for Plugin {
 }
 
 impl Plugin {
-    pub(crate) fn get_status(&self, query: &Value) -> Result<Value, Error> {
+    pub(crate) fn get_status(&self, query: &Value) -> Result<Value, String> {
         if let Some(lib) = &self.dylib {
             let status = unsafe {
-                let func: Symbol<unsafe extern "C" fn(*const Value) -> *mut Result<Value, Error>> =
-                    lib.get(b"get_status").map_err(|e| error!(e))?;
-                Box::from_raw(func(query)).map_err(|e| error!(e))?
+                let func: Symbol<unsafe extern "C" fn(*const Value) -> *mut Result<Value, String>> =
+                    lib.get(b"get_status").map_err(|e| e.to_string())?;
+                Box::from_raw(func(query)).map_err(|e| e.to_string())?
             };
             Ok(status)
         } else {
-            Err(error!("Unloaded plugin, call reload_after_deserialize()"))
+            Err("Unloaded plugin, call reload_after_deserialize()".to_string())
         }
     }
 
-    pub(crate) fn set_status(&self, status: &Value) -> Result<Value, Error> {
+    pub(crate) fn set_status(&self, status: &Value) -> Result<Value, String> {
         if let Some(lib) = &self.dylib {
             let plugin_answer = unsafe {
-                let func: Symbol<unsafe extern "C" fn(*const Value) -> *mut Result<Value, Error>> =
-                    lib.get(b"set_status").map_err(|e| error!(e))?;
-                Box::from_raw(func(status)).map_err(|e| error!(e))?
+                let func: Symbol<unsafe extern "C" fn(*const Value) -> *mut Result<Value, String>> =
+                    lib.get(b"set_status").map_err(|e| e.to_string())?;
+                Box::from_raw(func(status)).map_err(|e| e.to_string())?
             };
             Ok(plugin_answer)
         } else {
-            Err(error!("Unloaded plugin, call reload_after_deserialize()"))
+            Err("Unloaded plugin, call reload_after_deserialize()".to_string())
         }
     }
 
-    pub(crate) fn load(name: &str, path: &str) -> Result<Self, Error> {
+    pub(crate) fn load(name: &str, path: &str) -> Result<Self, String> {
         Ok(Self {
             device_name: name.to_string(),
-            dylib: Some(Library::new(path).map_err(|e| error!(e))?),
+            dylib: Some(Library::new(path).map_err(|e| e.to_string())?),
             libary_path: PathBuf::from(path),
         })
     }
 
-    pub fn reload_after_deserialize(&mut self) -> Result<(), Error> {
-        self.dylib = Some(Library::new(&self.libary_path).map_err(|e| error!(e))?);
+    pub fn reload_after_deserialize(&mut self) -> Result<(), String> {
+        self.dylib = Some(Library::new(&self.libary_path).map_err(|e| e.to_string())?);
         Ok(())
     }
 }
