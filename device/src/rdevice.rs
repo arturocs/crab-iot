@@ -4,7 +4,7 @@ use super::Readable;
 use crate::plugin::Plugin;
 use serde::{Deserialize, Serialize};
 use utils::{error::Error, *};
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Serialize, Deserialize, Clone)]
 pub struct RDevice {
     name: String,
     plugin: Plugin,
