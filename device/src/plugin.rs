@@ -9,7 +9,15 @@ pub struct Plugin {
     dylib: Option<Library>,
     libary_path: PathBuf,
 }
-
+impl Clone for Plugin {
+    fn clone(&self) -> Self {
+        Self::load(
+            self.device_name.as_str(),
+            self.libary_path.to_str().unwrap(),
+        )
+        .unwrap()
+    }
+}
 impl PartialEq for Plugin {
     fn eq(&self, other: &Self) -> bool {
         self.libary_path == other.libary_path && self.device_name == other.device_name
