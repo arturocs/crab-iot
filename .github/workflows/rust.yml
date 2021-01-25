@@ -52,7 +52,7 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           profile: minimal
-          toolchain: "1.41"
+          toolchain: "1.42"
           override: true
       - uses: actions-rs/cargo@v1
       - name: Run tests
