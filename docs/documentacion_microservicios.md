@@ -16,11 +16,15 @@ Finalmente he elegido actix-web por todas las herramientas que trae así como lo
 
 He dividido las rutas en dispositivos de solo lectura y dispositivos de lectura/escritura. Esta decisión ha venido en parte dada por el diseño interno de crab-iot, ya que los dispositivos de solo lectura están representados con un tipo distinto a los dispositivos de lectura/escritura, por lo que no pueden ser almacenados en la misma estructura de datos sin recurrir a algún truco como [std::any](https://doc.rust-lang.org/std/any/).
 
-Para añadir un nuevo dispositivo hay que hacer una peticion post a /rdevice o /rwdevice dependiendo de si el dispositivo a crear es de solo lectura o de lectura/escritura. De la misma forma haciendo una peticion delete a /rwdevice/interruptor, eliminaremos el dispositivo con permisos de lectura/escritura llamado interruptor. Tambien demos recibir una lista de los dispositivos de solo lectura diponibles realizado una petición get a /rdevices.
+Para añadir un nuevo dispositivo hay que hacer una peticion post a /rdevices o /rwdevices dependiendo de si el dispositivo a crear es de solo lectura o de lectura/escritura. De la misma forma haciendo una peticion delete a /rwdevices/interruptor, eliminaremos el dispositivo con permisos de lectura/escritura llamado interruptor. Estas rutas están relacionadas con la [HU Añadir soporte para nuevos dispositivos facilmente.](https://github.com/arturocs/crab-iot/issues/6)
 
-También se han añadido un par de rutas para los dispositivos falsos que creé durante los hitos anteriores. Si se realiza una peticion get a /rdevice/weather/forecast/n, el sistema devolverá la predicción del tiempo para dentro de n días, siendo el máximo n posible 7. 
+Tambien demos recibir una lista de los dispositivos de solo lectura diponibles realizado una petición get a /rdevices.  Esta ruta está relacionada con la issue [Listar dispositivos enlazados](https://github.com/arturocs/crab-iot/issues/14)
 
-Realizando una petición get a /rwdevice/fake_switch se puede ver el estado del interruptor falso, mientras que si realizamos la peticion post pertinente podremos encenderlo o apagarlo.
+### 
+
+También se han añadido un par de rutas para los dispositivos falsos que creé durante los hitos anteriores. Si se realiza una peticion get a /rdevice/weather/forecast/n, el sistema devolverá la predicción del tiempo para dentro de n días, siendo el máximo n posible 7.  Esta ruta está relacionada con la issue [Devolver información climática](https://github.com/arturocs/crab-iot/issues/42)
+
+Realizando una petición get a /rwdevice/fake_switch se puede ver el estado del interruptor falso, mientras que si realizamos la peticion post pertinente podremos encenderlo o apagarlo. Esta ruta está relacionada con la [HU Modificar estado de un actuador](https://github.com/arturocs/crab-iot/issues/2)
 
 ### 3. Configuración distribuida, logs.
 
