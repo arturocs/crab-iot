@@ -1,9 +1,9 @@
-FROM rust:1.49
+FROM rust:slim
 
 WORKDIR app
 
 COPY . .
 
-RUN make build; cargo build --release
+RUN apt-get update && apt-get install make; make build; cargo build --release
 
 ENTRYPOINT ["./target/release/crab-iot"]
