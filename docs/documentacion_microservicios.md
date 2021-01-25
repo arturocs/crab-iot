@@ -16,15 +16,15 @@ Finalmente he elegido actix-web por todas las herramientas que trae así como lo
 
 He dividido las rutas en dispositivos de solo lectura y dispositivos de lectura/escritura. Esta decisión ha venido en parte dada por el diseño interno de crab-iot, ya que los dispositivos de solo lectura están representados con un tipo distinto a los dispositivos de lectura/escritura, por lo que no pueden ser almacenados en la misma estructura de datos sin recurrir a algún truco como [std::any](https://doc.rust-lang.org/std/any/).
 
-Para añadir un nuevo dispositivo hay que hacer una peticion post a /rdevices o /rwdevices dependiendo de si el dispositivo a crear es de solo lectura o de lectura/escritura. De la misma forma haciendo una peticion delete a /rwdevices/interruptor, eliminaremos el dispositivo con permisos de lectura/escritura llamado interruptor. Estas rutas están relacionadas con la [HU Añadir soporte para nuevos dispositivos facilmente.](https://github.com/arturocs/crab-iot/issues/6)
+Las rutas pueden encontrarse [aquí](https://github.com/arturocs/crab-iot/blob/master/src/test_routes.rs), y las funciones que manejan cada ruta pueden encontrarse [aquí.](https://github.com/arturocs/crab-iot/blob/master/src/handler.rs)
 
-Tambien demos recibir una lista de los dispositivos de solo lectura diponibles realizado una petición get a /rdevices.  Esta ruta está relacionada con la issue [Listar dispositivos enlazados](https://github.com/arturocs/crab-iot/issues/14)
+Para añadir un nuevo dispositivo hay que hacer una petición post a /rdevices o /rwdevices dependiendo de si el dispositivo a crear es de solo lectura o de lectura/escritura. De la misma forma haciendo una petición delete a /rwdevices/interruptor, eliminaremos el dispositivo con permisos de lectura/escritura llamado interruptor. Estas rutas están relacionadas con la [HU Añadir soporte para nuevos dispositivos facilmente,](https://github.com/arturocs/crab-iot/issues/6) y devuelven el código de estado 200, en el cuerpo de la respuesta se indica si el dispositivo creado es completamente nuevo o ha sobrescrito un recurso dispositivo. En el caso de las peticiones delete, devuelven el código de estado 404 si el dispositivo no existe.
 
-### 
+Cambien demos recibir una lista de los dispositivos de solo lectura disponibles realizado una petición get a /rdevices.  Esta ruta está relacionada con la issue [Listar dispositivos enlazados](https://github.com/arturocs/crab-iot/issues/14) y siempre devuelve el código de estado 200.
 
-También se han añadido un par de rutas para los dispositivos falsos que creé durante los hitos anteriores. Si se realiza una peticion get a /rdevice/weather/forecast/n, el sistema devolverá la predicción del tiempo para dentro de n días, siendo el máximo n posible 7.  Esta ruta está relacionada con la issue [Devolver información climática](https://github.com/arturocs/crab-iot/issues/42)
+También se han añadido un par de rutas para los dispositivos falsos que creé durante los hitos anteriores. Si se realiza una petición get a /rdevice/weather/forecast/n, el sistema devolverá la predicción del tiempo para dentro de n días, siendo el máximo n posible 7. En caso de que n sea mayor que 7 se devolverá el código de estado 400, y si es inferior se devolverá el código 200.   Esta ruta está relacionada con la issue [Devolver información climática](https://github.com/arturocs/crab-iot/issues/42). 
 
-Realizando una petición get a /rwdevice/fake_switch se puede ver el estado del interruptor falso, mientras que si realizamos la peticion post pertinente podremos encenderlo o apagarlo. Esta ruta está relacionada con la [HU Modificar estado de un actuador](https://github.com/arturocs/crab-iot/issues/2)
+Realizando una petición get a /rwdevice/fake_switch se puede ver el estado del interruptor falso, mientras que si realizamos la petición post pertinente podremos encenderlo o apagarlo. Esta ruta está relacionada con la [HU Modificar estado de un actuador](https://github.com/arturocs/crab-iot/issues/2)
 
 ### 3. Configuración distribuida, logs.
 
