@@ -7,7 +7,7 @@ use plugin::Plugin;
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 use std::net::IpAddr;
-use utils::{error::Error};
+use utils::error::Error;
 pub fn local_search() -> Result<Vec<IpAddr>, Error> {
     todo!()
 }
@@ -40,7 +40,3 @@ pub trait Writable<'a>: Readable<'a> {
         self.get_mut_plugin().set_status(status)
     }
 }
-
-
-
-

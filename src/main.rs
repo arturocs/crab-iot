@@ -2,9 +2,9 @@
 extern crate lazy_static;
 pub mod handler;
 pub mod test_routes;
-use simple_logger::SimpleLogger;
 use actix_web::{middleware, web, App, HttpServer};
 use etcd_client::Client;
+use simple_logger::SimpleLogger;
 use std::{env, io};
 
 use crate::handler::*;

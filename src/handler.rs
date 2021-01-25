@@ -1,4 +1,4 @@
-use actix_web::{web,  HttpResponse};
+use actix_web::{web, HttpResponse};
 use device::{rdevice::RDevice, rwdevice::RWDevice, Readable, Writable};
 use serde::Deserialize;
 use serde_json::json;
@@ -10,7 +10,6 @@ pub struct SwitchStatus {
 }
 
 pub async fn get_real_forecast(web::Path((day,)): web::Path<(String,)>) -> HttpResponse {
-
     let day = match day.parse::<u8>() {
         Ok(d) => d,
         Err(e) => return HttpResponse::BadRequest().json(json!({ "error": e.to_string() })),
@@ -23,7 +22,6 @@ pub async fn get_real_forecast(web::Path((day,)): web::Path<(String,)>) -> HttpR
 }
 
 pub async fn get_fake_forecast(web::Path((day,)): web::Path<(String,)>) -> HttpResponse {
-
     let day = match day.parse::<u8>() {
         Ok(d) => d,
         Err(e) => return HttpResponse::BadRequest().json(json!({ "error": e.to_string() })),

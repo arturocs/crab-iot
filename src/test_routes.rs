@@ -3,16 +3,19 @@ mod actix_tests {
 
     use actix_web::test;
     use actix_web::{web, App};
-    use device::{Readable, rdevice::RDevice, rwdevice::RWDevice};
+    use device::{rdevice::RDevice, rwdevice::RWDevice, Readable};
     use serde_json::json;
 
     use crate::handler::*;
 
     #[actix_rt::test]
     async fn get_forecast() {
-        let mut test = test::init_service(App::new().service(
-            web::scope("/rdevice").route("/weather/forecast/{day}", web::get().to(get_fake_forecast)),
-        ))
+        let mut test = test::init_service(
+            App::new().service(
+                web::scope("/rdevice")
+                    .route("/weather/forecast/{day}", web::get().to(get_fake_forecast)),
+            ),
+        )
         .await;
 
         let request = test::TestRequest::get()
@@ -231,6 +234,4 @@ mod actix_tests {
 
         assert!(response.status().is_success());
     }
-
-
 }
