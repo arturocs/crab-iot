@@ -27,9 +27,12 @@ mod actix_tests {
     }
     #[actix_rt::test]
     async fn get_climate() {
-        let mut test = test::init_service(App::new().service(
-            web::scope("/rdevices").route("/weather/climate/{day}", web::get().to(get_fake_climate)),
-        ))
+        let mut test = test::init_service(
+            App::new().service(
+                web::scope("/rdevices")
+                    .route("/weather/climate/{day}", web::get().to(get_fake_climate)),
+            ),
+        )
         .await;
 
         let request = test::TestRequest::get()
