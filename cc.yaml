@@ -7,14 +7,17 @@ entidad:
   - bench/src/bench.rs
   - fake_plugin/src/lib.rs
   - weather_fake_plugin/src/lib.rs
+  - weather_plugin/src/lib.rs
   - utils/src/weather_json_schema.rs
   - utils/src/error.rs
-
-lenguaje:
-  - rust
+  - mockup_device/src/main.rs
+  
+lenguaje: rust
 
 test:
   - tests/lib.rs
+  - src/test_routes.rs
 
-fichero_tareas:
-  - Makefile
+fichero_tareas: Makefile
+  
+make: make
