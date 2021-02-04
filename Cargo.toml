@@ -36,7 +36,7 @@ actix-session = "0.4"
 actix-utils = "2"
 simple_logger = "1.11.0"
 log = "0.4.13"
-actix-rt = "1.1.1"
+actix-rt = "2.0.0"
 [workspace]
 members = ["fake_plugin", "bench", "device", "weather_fake_plugin", "weather_plugin", "utils"]
 
