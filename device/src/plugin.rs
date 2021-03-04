@@ -52,15 +52,19 @@ impl Plugin {
     }
 
     pub(crate) fn load(name: &str, path: &str) -> Result<Self, String> {
-        Ok(Self {
-            device_name: name.to_string(),
-            dylib: Some(Library::new(path).map_err(|e| e.to_string())?),
-            libary_path: PathBuf::from(path),
-        })
+        unsafe {
+            Ok(Self {
+                device_name: name.to_string(),
+                dylib: Some(Library::new(path).map_err(|e| e.to_string())?),
+                libary_path: PathBuf::from(path),
+            })
+        }
     }
 
     pub fn reload_after_deserialize(&mut self) -> Result<(), String> {
-        self.dylib = Some(Library::new(&self.libary_path).map_err(|e| e.to_string())?);
-        Ok(())
+        unsafe {
+            self.dylib = Some(Library::new(&self.libary_path).map_err(|e| e.to_string())?);
+            Ok(())
+        }
     }
 }
