@@ -33,7 +33,7 @@ rustls = "0.19"
 actix-web = { version = "3.3", features = ["rustls"] }
 actix-files = "0.5"
 actix-session = "0.4"
-actix-utils = "2"
+actix-utils = "3"
 simple_logger = "1.11.0"
 log = "0.4.13"
 actix-rt = "2.1.0"
