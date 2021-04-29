@@ -1,0 +1,22 @@
+version: 2
+updates:
+- package-ecosystem: cargo
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: pretty_assertions
+    versions:
+    - 0.7.1
+  - dependency-name: libloading
+    versions:
+    - 0.7.0
+  - dependency-name: actix-rt
+    versions:
+    - 2.0.0
+    - 2.0.2
+  - dependency-name: rustls
+    versions:
+    - 0.19.0
